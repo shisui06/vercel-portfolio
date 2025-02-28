@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <NavBar />
       <div>
-        <h1>Welcome to my world my beautiful creature</h1>
+        <h1 className='text-2xl text-white font semi-bold '>Welcome to my world my beautiful creature</h1>
     
       </div>
     </div>
