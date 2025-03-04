@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
-import { NavBarDemo } from "@/components/ui/tubelight-navbar"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +14,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+});
 
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  variable: '--font-bebas-neue',
+  weight: '400',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant-garamond',
+  weight: '400',
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,9 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[url('/background/blurry-colorful.jpg')] bg-cover bg-center bg-fixed`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-[url('/background/blurry-colorful.jpg')] bg-cover bg-center bg-fixed`}
       >
-        <NavBarDemo />
         {children}
       </body>
     </html>
