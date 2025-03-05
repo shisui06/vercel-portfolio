@@ -24,9 +24,20 @@ const navItems = [
   },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  onSectionChange: (index: number) => void;
+}
+
+export default function Navbar({ onSectionChange }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleNavClick = (index: number) => {
+    onSectionChange(index);
+    // Add smooth scroll logic here
+    const section = document.getElementById(navItems[index].path.slice(1));
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
@@ -42,10 +53,10 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
+            {navItems.map((item, index) => (
+              <button
                 key={item.path}
-                href={item.path}
+                onClick={() => handleNavClick(index)}
                 className={`relative text-sm font-medium transition-colors ${
                   pathname === item.path
                     ? "text-lime-400"
@@ -59,7 +70,7 @@ export default function Navbar() {
                     className="absolute left-0 top-full h-[2px] w-full bg-lime-400"
                   />
                 )}
-              </Link>
+              </button>
             ))}
           </div>
 

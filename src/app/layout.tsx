@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+"use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import React from "react";
+import { metadata } from "./metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,22 +33,30 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: '400',
 });
 
-export const metadata: Metadata = {
-  title: "Portfolio - Tamoor",
-  description: "Portfolio personnel de Tamoor",
-};
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [currentBg, setCurrentBg] = React.useState('/background/blurry-colorful.jpg');
+  const backgrounds = [
+    '/background/bg1.jpg',
+    '/background/bg2.jpg',
+    '/background/bg3.jpg',
+    '/background/bg4.jpg'
+  ];
+
+  const handleSectionChange = (index: number) => {
+    setCurrentBg(backgrounds[index % backgrounds.length]);
+  };
+
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-[url('/background/blurry-colorful.jpg')] bg-cover bg-center bg-fixed bg-no-repeat`}
+        style={{ backgroundImage: `url(${currentBg})` }}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-cover bg-center bg-fixed bg-no-repeat transition-all duration-500`}
       >
-        <Navbar />
+        <Navbar onSectionChange={handleSectionChange} />
         <main className="pt-16 bg-jetblack/90">{children}</main>
       </body>
     </html>

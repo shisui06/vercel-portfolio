@@ -1,16 +1,13 @@
-
-
 import React from "react";
-import { FlipWords } from "./ui/flip-words";
+import { FlipWords } from "@/components/ui/flip-words";
 
 export function FlipWordsDemo() {
-  const words = ["sfvsfb", "uyth", "uhihihb", "modern"];
+  const words = ["projects", "creations", "designs", "ideas"];
 
   return (
     <div className="h-[40rem] flex justify-center items-center px-4">
       <div className="text-6xl mx-auto text-white font-normal">
-        Welcome 
-        <FlipWords words={words} /> <br />
+        Welcome my <FlipWords words={words} /> <br />
         websites with Aceternity UI
       </div>
     </div>
