@@ -1,32 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
-import Link from "next/link";
-
-const projectsData = [
-  {
-    id: 1,
-    title: "Benactor",
-    description: "Plateforme pour connecter les OBNL avec les bénévoles",
-    image: "/images/projects/benactor.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    slug: "benactor",
-  },
-  {
-    id: 2,
-    title: "Bento Sushi",
-    description: "Composant style bento",
-    image: "/images/projects/bento.webp",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-    slug: "bento-sushi",
-  },
-  // ... autres projets
-];
+import Image from "next/image";
+import { projectsData } from "@/data/projects";
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -45,39 +20,49 @@ const ProjectsSection = () => {
         Mes projets
       </h2>
       <div className="px-4 flex gap-2 py-6 text-white sm:justify-center">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
+        <button
+          onClick={() => handleTagChange("All")}
+          className={`px-4 py-2 rounded-full ${
+            tag === "All" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
+          }`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => handleTagChange("Web")}
+          className={`px-4 py-2 rounded-full ${
+            tag === "Web" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
+          }`}
+        >
+          Web
+        </button>
+        <button
+          onClick={() => handleTagChange("Mobile")}
+          className={`px-4 py-2 rounded-full ${
+            tag === "Mobile" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
+          }`}
+        >
+          Mobile
+        </button>
       </div>
-      <ul className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <div className="grid md:grid-cols-3 gap-8 md:gap-12 p-4">
         {filteredProjects.map((project, index) => (
-          <li key={index}>
-            <Link href={`/projects/${project.slug}`}>
-              <ProjectCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                imgUrl={project.image}
-                gitUrl={project.gitUrl}
-                previewUrl={project.previewUrl}
-                className="w-full h-full object-cover"
-              />
-            </Link>
-          </li>
+          <div key={index} className="relative rounded-lg overflow-hidden">
+            <Image
+              alt={project.title}
+              className="w-full h-64 object-cover"
+              src={project.image}
+              width={400}
+              height={250}
+              quality={75}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/80 p-4">
+              <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+              <p className="text-gray-400 line-clamp-2">{project.description}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };

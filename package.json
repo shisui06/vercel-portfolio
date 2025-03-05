@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@heroui/image": "^2.2.10",
+    "@heroui/react": "^2.7.4",
+    "@heroui/system": "^2.4.11",
+    "@heroui/theme": "^2.4.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.10",

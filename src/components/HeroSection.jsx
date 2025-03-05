@@ -68,22 +68,15 @@ const HeroSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-12">
         <div className="col-span-8 place-self-center text-center sm:text-left justify-self-start">
           <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-lime-500">
-              Hello, Je suis Tamoor{" "}
-            </span>
+            
             <br></br>
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
             Développeur-web basé à Montréal
           </p>
           <div className="flex mt-4 items-center justify-center sm:justify-start p-4">
-            <IOSSwitch 
-              checked={isAvailable} 
-              onChange={toggleAvailability} 
-            />
-            <div className="flex ml-3 text-white text-lg whitespace-nowrap">
-              {isAvailable ? "Disponible pour embauche" : "Non disponible pour embauche"}
-            </div>
+            
+  
           </div>
           <div className="mt-4">
             <Link

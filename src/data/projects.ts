@@ -7,17 +7,6 @@ export const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
-    slug: "benactor",
-    technologies: ["React", "Node.js", "MongoDB"],
-    challenges: [
-      "Gestion des utilisateurs multiples",
-      "Intégration de paiements",
-      "Optimisation des performances"
-    ],
-    images: [
-      "/images/projects/benactor-1.png",
-      "/images/projects/benactor-2.png"
-    ]
   },
   {
     id: 2,
@@ -27,17 +16,41 @@ export const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
-    slug: "bento-sushi",
-    technologies: ["Next.js", "TypeScript", "TailwindCSS"],
-    challenges: [
-      "Création de composants réutilisables",
-      "Optimisation du rendu",
-      "Gestion des états"
-    ],
-    images: [
-      "/images/projects/bento-1.webp",
-      "/images/projects/bento-2.webp"
-    ]
   },
-  // Add more projects here
-]; 
+  {
+    id: 3,
+    title: "TO-DO App",
+    description: "Liste de tâches à faire",
+    image: "/images/projects/todo.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 4,
+    title: "Voyage X",
+    description: "Application mobile pour sauvergarder les prochaines destinations de voyage",
+    image: "/images/projects/voyagex.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 5,
+    title: "Travel Card",
+    description: "Composant de carte de voyage",
+    image: "/images/projects/travel-card.jpeg",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+  {
+    id: 6,
+    title: "Mobilico",
+    description: "Prototype avec Figma",
+    image: "/images/projects/mobilico.png",
+    tag: ["All", "Web"],
+    gitUrl: "/",
+    previewUrl: "/",
+  },
+];
