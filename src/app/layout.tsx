@@ -44,10 +44,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-[url('/background/blurry-colorful.jpg')] bg-cover bg-center bg-fixed`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-[url('/background/blurry-colorful.jpg')] bg-cover bg-center bg-fixed bg-no-repeat`}
       >
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main className="pt-16 bg-jetblack/90">{children}</main>
       </body>
     </html>
   );

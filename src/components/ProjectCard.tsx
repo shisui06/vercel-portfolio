@@ -17,7 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   className,
 }) => {
   return (
-    <div className={`rounded-xl overflow-hidden shadow-lg bg-[#181818] w-full h-[400px] flex flex-col ${className}`}>
+    <div className={`rounded-xl overflow-hidden shadow-lg bg-black w-full h-[400px] flex flex-col ${className}`}>
       <div className="h-[250px] relative flex justify-center items-center">
         <Image
           alt={title}
@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
       <div className="p-6 flex-1">
         <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-[#ADB7BE] line-clamp-3">{description}</p>
+        <p className="text-gray-400 line-clamp-3">{description}</p>
       </div>
     </div>
   );

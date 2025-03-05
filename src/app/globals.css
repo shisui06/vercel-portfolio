@@ -6,10 +6,8 @@
 
 @layer base {
   :root {
-
-    --background: 0 0% 100%;
-
-    --foreground: 20 14.3% 4.1%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
     --card: 0 0% 100%;
 
@@ -58,10 +56,8 @@
     --radius: 0.5rem
   }
   .dark {
-
-    --background: 20 14.3% 4.1%;
-
-    --foreground: 60 9.1% 97.8%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
     --card: 20 14.3% 4.1%;
 
@@ -139,4 +135,11 @@
 
 .shimmer-button:hover::before {
   left: 100%;
+}
+
+@layer utilities {
+  .bg-jetblack {
+    background-color: #0a0a0a;
+  }
+  
 }

@@ -1,41 +1,21 @@
 "use client";
 import React from "react";
 
-export function FlipWords({ words }: { words: string[] }) {
+export function FlipWords({ words, className }: { words: string[]; className?: string }) {
   const [word, setWord] = React.useState(words[0]);
   
   React.useEffect(() => {
     let index = 0;
-    
-    function updateWord() {
-      console.log("Updating word...");
+    const intervalId = setInterval(() => {
       index = (index + 1) % words.length;
       setWord(words[index]);
-    }
-    
-    const intervalId = setInterval(updateWord, 2000);
+    }, 2000); // Adjust the interval (in milliseconds) for faster/slower rotation
     return () => clearInterval(intervalId);
   }, [words]);
 
   return (
-    <div style={{
-      backgroundColor: "red",
-      padding: "20px",
-      margin: "20px",
-      borderRadius: "8px",
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      zIndex: 9999
-    }}>
-      <h1 style={{
-        color: "white",
-        fontSize: "24px",
-        fontWeight: "bold"
-      }}>
-        {word}
-      </h1>
+    <div className={className}>
+      <span className="text-lime-400">{word}</span>
     </div>
   );
 }
