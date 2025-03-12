@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -35,13 +34,29 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
 
   const handleNavClick = (index: number) => {
     onSectionChange(index);
-    const sectionId = navItems[index].path.slice(1); // Remove the leading '/'
+    
+    // Handle home click
+    if (index === 0) {
+      window.history.pushState(null, '', '/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const sectionId = navItems[index].path.slice(1);
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback: Navigate to the route if the section doesn't exist
-      window.location.href = navItems[index].path;
+      // Calculate the exact position to scroll to
+      const offset = 80; // Adjust this value based on your navbar height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = section.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', `/#${sectionId}`);
     }
   };
 
@@ -49,21 +64,35 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.path.slice(1));
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId);
+      let foundActive = false;
+      
+      // Check sections from bottom to top
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
         if (section) {
           const rect = section.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(sectionId);
+          // More precise detection using 30% of viewport height
+          if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.3) {
+            setActiveSection(sections[i]);
+            foundActive = true;
             break;
           }
         }
       }
+
+      // If no section is active, default to home
+      if (!foundActive) {
+        setActiveSection('home');
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Add glowing underline style
+  const activeLinkStyle = "relative after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-lime-400 after:rounded-full after:shadow-[0_0_8px_2px_rgba(163,230,53,0.8)]";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
@@ -81,20 +110,16 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => {
               const sectionId = item.path.slice(1);
-              const isActive = activeSection === sectionId || pathname === item.path;
+              const isActive = activeSection === sectionId;
               return (
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(index)}
-                  className="relative text-sm font-medium transition-colors text-gray-300 hover:text-white"
+                  className={`relative text-sm font-medium transition-colors ${
+                    isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                  } ${isActive ? activeLinkStyle : ''}`}
                 >
                   {item.name}
-                  {(isActive) && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute left-0 top-full h-[2px] w-full bg-lime-400"
-                    />
-                  )}
                 </button>
               );
             })}
@@ -130,22 +155,25 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
             className="md:hidden"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-sm">
-              {navItems.map((item, index) => (
-                <button
-                  key={item.path}
-                  onClick={() => {
-                    handleNavClick(index);
-                    setIsOpen(false);
-                  }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    pathname === item.path
-                      ? "text-lime-400 bg-gray-900"
-                      : "text-gray-300 hover:text-white hover:bg-gray-700"
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
+              {navItems.map((item, index) => {
+                const isActive = pathname === item.path;
+                return (
+                  <button
+                    key={item.path}
+                    onClick={() => {
+                      handleNavClick(index);
+                      setIsOpen(false);
+                    }}
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      isActive
+                        ? "text-lime-400 bg-gray-900"
+                        : "text-gray-300 hover:text-white hover:bg-gray-700"
+                    } ${isActive ? activeLinkStyle : ''}`}
+                  >
+                    {item.name}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}

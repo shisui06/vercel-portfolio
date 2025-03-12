@@ -23,13 +23,24 @@ export default function Home() {
     }
   };
 
+  // Handle initial URL and hash
   useEffect(() => {
-    try {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    } catch (error) {
-      console.error("Error setting up scroll listener:", error);
-    }
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const section = document.getElementById(hash.slice(1));
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    // Handle initial load
+    handleHash();
+
+    // Handle hash changes
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
   return (
@@ -59,8 +70,56 @@ export default function Home() {
       <div id="projects" ref={sectionRefs[2]} className="h-screen">
         <ProjectsSection />
       </div>
-      <div id="contact" ref={sectionRefs[3]} className="h-screen">
-        {/* Contact content */}
+      <div id="contact" ref={sectionRefs[3]} className="min-h-screen flex items-center justify-center bg-black">
+        <div className="container mx-auto py-12 px-4">
+          <h1 className="text-4xl font-bold text-white mb-8 text-center">Contact Me</h1>
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target as HTMLFormElement);
+              const data = Object.fromEntries(formData);
+              console.log("Form data:", data);
+            }}
+            className="max-w-md mx-auto bg-gray-800 p-6 rounded-lg shadow-md border-2 border-lime-400"
+          >
+            <div className="mb-4">
+              <label className="block text-white font-medium mb-2">Name</label>
+              <input
+                type="text"
+                name="name"
+                className="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-lime-400"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-white font-medium mb-2">Email</label>
+              <input
+                type="email"
+                name="email"
+                className="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-lime-400"
+                placeholder="Your email"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-white font-medium mb-2">Message</label>
+              <textarea
+                name="message"
+                className="w-full p-2 rounded border border-gray-600 bg-gray-700 text-white focus:outline-none focus:border-lime-400"
+                placeholder="Your message"
+                rows={4}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-lime-400 text-black px-4 py-2 rounded-full font-medium hover:bg-lime-500 transition-colors"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
       <Footer />
     </div>

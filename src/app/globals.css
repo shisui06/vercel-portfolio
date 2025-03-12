@@ -108,8 +108,6 @@
   --sky-500: #0ea5e9;
 }
 
-
-
 .shimmer-button {
   position: relative;
   overflow: hidden;
@@ -129,6 +127,10 @@
 
 .shimmer-button:hover::before {
   left: 100%;
+}
+
+form {
+  display: block !important;
 }
 
 
