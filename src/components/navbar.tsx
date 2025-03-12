@@ -37,26 +37,27 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
     
     // Handle home click
     if (index === 0) {
-      window.history.pushState(null, '', '/');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.location.pathname !== "/") {
+        // Navigate to the main page
+        window.location.href = "/";
+      } else {
+        // Scroll to the top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
       return;
     }
 
     const sectionId = navItems[index].path.slice(1);
-    const section = document.getElementById(sectionId);
-    if (section) {
-      // Calculate the exact position to scroll to
-      const offset = 80; // Adjust this value based on your navbar height
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = section.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      window.history.pushState(null, '', `/#${sectionId}`);
+    if (window.location.pathname === "/") {
+      // Single-page behavior
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `/#${sectionId}`);
+      }
+    } else {
+      // Navigate to the main page with the correct hash
+      window.location.href = `/#${sectionId}`;
     }
   };
 

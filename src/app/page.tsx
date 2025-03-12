@@ -6,6 +6,8 @@ import { useRef, useEffect } from "react";
 import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
+import ProjectCard from "@/components/ProjectCard";
+import { projectsData } from "@/data/projects";
 
 export default function Home() {
   const sectionRefs = [
@@ -67,8 +69,23 @@ export default function Home() {
       <div id="about" ref={sectionRefs[1]} className="h-screen">
         <AboutSection />
       </div>
-      <div id="projects" ref={sectionRefs[2]} className="h-screen">
-        <ProjectsSection />
+      <div id="projects" ref={sectionRefs[2]} className="min-h-screen bg-black py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-white text-center mb-8">Mes projets</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectsData.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                imgUrl={project.image}
+                gitUrl={project.gitUrl}
+                previewUrl={project.previewUrl}
+                slug={project.slug}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       <div id="contact" ref={sectionRefs[3]} className="min-h-screen flex items-center justify-center bg-black">
         <div className="container mx-auto py-12 px-4">
