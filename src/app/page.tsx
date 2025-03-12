@@ -4,10 +4,10 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import ProjectsSection from "@/components/ProjectsSection";
+import AboutSection from "@/components/AboutSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
-
-
   const sectionRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -16,12 +16,20 @@ export default function Home() {
   ];
 
   const handleScroll = () => {
-    // Add logic to detect which section is in view and change background
+    try {
+      // Add logic to detect which section is in view and change background
+    } catch (error) {
+      console.error("Error in scroll handler:", error);
+    }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    try {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    } catch (error) {
+      console.error("Error setting up scroll listener:", error);
+    }
   }, []);
 
   return (
@@ -46,7 +54,7 @@ export default function Home() {
         </div>
       </div>
       <div id="about" ref={sectionRefs[1]} className="h-screen">
-        {/* About content */}
+        <AboutSection />
       </div>
       <div id="projects" ref={sectionRefs[2]} className="h-screen">
         <ProjectsSection />
@@ -54,6 +62,7 @@ export default function Home() {
       <div id="contact" ref={sectionRefs[3]} className="h-screen">
         {/* Contact content */}
       </div>
+      <Footer />
     </div>
   );
 }

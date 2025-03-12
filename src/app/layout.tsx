@@ -4,7 +4,7 @@ import { Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import React from "react";
-import { metadata } from "./metadata";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,26 +38,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [currentBg, setCurrentBg] = React.useState('/background/blurry-colorful.jpg');
-  const backgrounds = [
-    '/background/bg1.jpg',
-    '/background/bg2.jpg',
-    '/background/bg3.jpg',
-    '/background/bg4.jpg'
-  ];
-
   const handleSectionChange = (index: number) => {
-    setCurrentBg(backgrounds[index % backgrounds.length]);
+    console.log("Section changed to:", index);
+    // Add any additional logic you want to handle when the section changes
   };
 
   return (
-    <html lang="fr">
-      <body
-        style={{ backgroundImage: `url(${currentBg})` }}
-        className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased min-h-screen bg-cover bg-center bg-fixed bg-no-repeat transition-all duration-500`}
-      >
-        <Navbar onSectionChange={handleSectionChange} />
-        <main className="pt-16 bg-jetblack/90">{children}</main>
+    <html lang="fr" className="h-full">
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased h-full bg-[url('/background/bg1.jpg')] bg-cover bg-center bg-fixed`}>
+        <ErrorBoundary>
+          <Navbar onSectionChange={handleSectionChange} />
+          <main className="pt-16 min-h-full">
+            {children}
+          </main>
+        </ErrorBoundary>
       </body>
     </html>
   );

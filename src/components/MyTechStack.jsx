@@ -1,5 +1,7 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
+import Marquee from 'react-fast-marquee';
 
 const techStack = [
   { name: 'HTML', icon: '/images/stackicon/html.svg' },
@@ -31,6 +33,25 @@ const MyTechStack = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Marquee Section */}
+      <div className="mt-12">
+        <h3 className="text-white text-center text-2xl font-bold mb-4">Mes Compétences en Mouvement</h3>
+        <Marquee speed={50} gradient={false} pauseOnHover>
+          {techStack.map((tech, index) => (
+            <div key={index} className="flex items-center mx-8">
+              <Image
+                src={tech.icon}
+                alt={`${tech.name} icon`}
+                width={48}
+                height={48}
+                className="mr-2"
+              />
+              <p className="text-white text-lg">{tech.name}</p>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </section>
   );

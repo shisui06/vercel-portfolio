@@ -1,14 +1,14 @@
-import {heroui} from '@heroui/theme';
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 
 export default {
     darkMode: ["class"],
   content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/components/image.js"
+    "./node_modules/@heroui/theme/dist/components/(form|image).js"
   ],
   theme: {
   	extend: {
@@ -53,7 +53,7 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-  			white: '#ffffff',
+  			white: '#ffffff'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -61,11 +61,21 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		fontFamily: {
-  			cinzel: ['var(--font-cinzel)'],
-  			bebasNeue: ['var(--font-bebas-neue)'],
-  			cormorantGaramond: ['var(--font-cormorant-garamond)'],
+  			cinzel: [
+  				'var(--font-cinzel)'
+  			],
+  			bebasNeue: [
+  				'var(--font-bebas-neue)'
+  			],
+  			cormorantGaramond: [
+  				'var(--font-cormorant-garamond)'
+  			]
   		},
+  		backgroundImage: {
+  			'grid-pattern': 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+  			'grid-pattern-light': 'linear-gradient(to right, #ccc 1px, transparent 1px), linear-gradient(to bottom, #ccc 1px, transparent 1px)'
+  		}
   	}
   },
-  plugins: [animate,heroui()],
+  plugins: [animate],
 } satisfies Config;
