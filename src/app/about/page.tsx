@@ -13,7 +13,7 @@ export default function About() {
     },
     {
       title: "2022",
-      content: "Premiers projets personnels"
+      content: "Agent de service à la clientèle"
     },
     // Add more timeline entries as needed
   ];

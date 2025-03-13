@@ -33,7 +33,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full">
       <div className="relative">
         <div className="absolute left-1/2 h-full w-0.5 bg-gray-600 transform -translate-x-1/2"></div>
         

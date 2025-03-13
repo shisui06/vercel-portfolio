@@ -69,7 +69,7 @@ export default function Home() {
       <div id="about" ref={sectionRefs[1]} className="h-screen">
         <AboutSection />
       </div>
-      <div id="projects" ref={sectionRefs[2]} className="min-h-screen bg-black py-12">
+      <div id="projects" ref={sectionRefs[2]} className="min-h-screen py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-white text-center mb-8">Mes projets</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div id="contact" ref={sectionRefs[3]} className="min-h-screen flex items-center justify-center bg-black">
+      <div id="contact" ref={sectionRefs[3]} className="min-h-screen flex items-center justify-center ">
         <div className="container mx-auto py-12 px-4">
           <h1 className="text-4xl font-bold text-white mb-8 text-center">Contact Me</h1>
           <form 
