@@ -5,11 +5,11 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
   const project = projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
-    return <div>Project not found</div>;
+    return <div>Projet non trouvé</div>;
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-gray-900 text-white p-8">
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold mb-8">{project.title}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

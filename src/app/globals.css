@@ -133,6 +133,10 @@ form {
   display: block !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
   
 
