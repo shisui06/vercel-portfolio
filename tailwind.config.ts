@@ -61,9 +61,7 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		fontFamily: {
-  			cinzel: [
-  				'var(--font-cinzel)'
-  			],
+  			cinzel: ['var(--font-cinzel)', 'serif'],
   			bebasNeue: [
   				'var(--font-bebas-neue)'
   			],

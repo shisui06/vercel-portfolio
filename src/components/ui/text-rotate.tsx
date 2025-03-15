@@ -255,7 +255,7 @@ function Preview() {
   return (
     <div className="w-full h-full text-6xl sm:text-3xl  md:text-5xl flex flex-row items-center justify-center font-overusedGrotesk text-white  font-bold overflow-hidden p-12 sm:p-20 md:p-24">
       <LayoutGroup>
-        <motion.p className="flex whitespace-pre" layout>
+        <motion.div className="flex whitespace-pre" layout>
           <motion.span
             className="pt-0.5 sm:pt-1 md:pt-2"
             layout
@@ -290,7 +290,7 @@ function Preview() {
           >
             {" "}into my world
           </motion.span>
-        </motion.p>
+        </motion.div>
       </LayoutGroup>
     </div>
   );

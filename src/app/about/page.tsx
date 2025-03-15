@@ -8,8 +8,20 @@ export default function About() {
   // Add timeline data
   const timelineData = [
     {
+      title: "2024",
+      content: (
+        <div>
+          <p>Built and launched Aceternity UI and Aceternity UI Pro from scratch.</p>
+        </div>
+      ),
+    },
+    {
       title: "2023",
-      content: "Formation en développement web"
+      content: (
+        <div>
+          <p>Started working on the initial design and concept for Aceternity UI.</p>
+        </div>
+      ),
     },
     {
       title: "2022",
@@ -19,12 +31,12 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen bg-gray-900 p-8">
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold text-white mb-8">À propos de moi</h1>
         <TextGenerateEffect 
           words={aboutText} 
-          className="text-lg text-gray-400 mb-12"
+          className="text-lg text-white mb-12"
           duration={0.5} // Adjust speed as needed
         />
         <h2 className="text-3xl font-bold text-white mb-8">Mon Parcours</h2>

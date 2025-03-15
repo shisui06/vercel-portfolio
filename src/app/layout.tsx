@@ -1,6 +1,5 @@
 "use client";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
+import { Geist, Geist_Mono,Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import React from "react";
@@ -45,7 +44,7 @@ export default function RootLayout({
 
   return (
     <html lang="fr" className="h-full">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased h-full`}
+      <body className={`${cormorantGaramond.variable} antialiased h-full`}
         style={{
           backgroundImage: "url('/images/background/bg3.jpg')",
           backgroundSize: "cover",

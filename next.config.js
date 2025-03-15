@@ -8,6 +8,9 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ["assets.aceternity.com"],
+  },
 }
 
 module.exports = nextConfig; 
