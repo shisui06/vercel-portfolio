@@ -1,5 +1,5 @@
 "use client";
-import { FlipWordsDemo } from "@/components/custom/FlipWordCustom";
+import { TextRotate } from "@/components/ui/text-rotate";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
@@ -10,9 +10,10 @@ import ProjectCard from "@/components/ProjectCard";
 import { projectsData } from "@/data/projects";
 import ContactSection from "@/components/ContactSection";
 import LogoCarousel from "@/components/custom/LogoCarousel";
+import { Preview } from "@/components/ui/text-rotate";
 
 const logos = [
-  { img: "/logos/logo1.png", name: "Logo 1" },
+  { img: "/public/images/stackicon/css.png", name: "Logo 1" },
   { img: "/logos/logo2.png", name: "Logo 2" },
   // Ajoutez d'autres logos ici
 ];
@@ -74,8 +75,8 @@ export default function Home() {
     >
       <div id="home" ref={sectionRefs[0]} className="h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">
-          {/* Section FlipWords */}
-          <FlipWordsDemo />
+          {/* Section Preview */}
+          <Preview />
           
           {/* Section Boutons */}
           <div className="mt-8 space-x-4">
