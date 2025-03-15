@@ -1,12 +1,28 @@
 // Page "À propos" (route "/about")
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Timeline } from "@/components/ui/timeline";
+import Image from "next/image";
 
 export default function About() {
   const aboutText = "Je suis un développeur web débutant, passionné par la création d'applications web interactives. J'aime apprendre de nouvelles technologies et m'adapter rapidement à différents environnements de travail. J'ai déjà participé à des projets en équipe, ce qui m'a permis de découvrir les méthodes agiles comme Scrum et Kanban pour organiser le travail et livrer des fonctionnalités de manière continue. Je suis motivé par l'idée de relever de nouveaux défis et de travailler avec des équipes dynamiques pour créer des solutions web utiles. Mon objectif est de continuer à apprendre et de contribuer activement aux projets auxquels je participe.";
 
   // Add timeline data
   const timelineData = [
+    {
+      title: "ADT 2016-2024",
+      content: (
+        <div>
+          <Image
+            src="/adt-Logo.png" // Path to your logo
+            alt="ADT Logo"
+            width={100} // Adjust width as needed
+            height={100} // Adjust height as needed
+            className="mb-4" // Add any additional styling here
+          />
+          <p>Description of ADT 2016-2024.</p>
+        </div>
+      ),
+    },
     {
       title: "2024",
       content: (
