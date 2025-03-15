@@ -3,6 +3,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { LogoCarousel } from "@/components/logo-carousel";
 
 export default function About() {
   const aboutText = "Je suis un développeur web débutant, passionné par la création d'applications web interactives. J'aime apprendre de nouvelles technologies et m'adapter rapidement à différents environnements de travail. J'ai déjà participé à des projets en équipe, ce qui m'a permis de découvrir les méthodes agiles comme Scrum et Kanban pour organiser le travail et livrer des fonctionnalités de manière continue. Je suis motivé par l'idée de relever de nouveaux défis et de travailler avec des équipes dynamiques pour créer des solutions web utiles. Mon objectif est de continuer à apprendre et de contribuer activement aux projets auxquels je participe.";
@@ -14,7 +15,7 @@ export default function About() {
       content: (
         <div>
           <Image
-            src="/adt-Logo.png" // Path to your logo
+            src="/public/images/job-logo/adt-logo.png" // Path to your logo
             alt="ADT Logo"
             width={100} // Adjust width as needed
             height={100} // Adjust height as needed
@@ -58,9 +59,7 @@ export default function About() {
         />
         <h2 className="text-3xl font-bold text-white mb-8">Mon Parcours</h2>
         <Timeline data={timelineData} />
-        <ShimmerButton className="mt-8">
-          Learn More
-        </ShimmerButton>
+        <LogoCarousel logos={logos} />
       </div>
     </div>
   );

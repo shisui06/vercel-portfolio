@@ -1,151 +1,71 @@
 "use client"
 
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type SVGProps,
-} from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { GradientHeading } from "@/components/custom/GradientHeading"
+import { LogoCarousel, type Logo } from "@/components/logo-carousel"
+import { VercelLogo, ReactLogo, NextJsLogo, TailwindLogo, FramerLogo } from "@/components/sample-logos"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
 
-interface Logo {
-  name: string
-  id: number
-  img: string
-}
+export default function Home() {
+  const [columnCount, setColumnCount] = useState(5)
 
-interface LogoColumnProps {
-  logos: Logo[]
-  index: number
-  currentTime: number
-}
-
-const shuffleArray = <T,>(array: T[]): T[] => {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
-
-const distributeLogos = (allLogos: Logo[], columnCount: number): Logo[][] => {
-  const shuffled = shuffleArray(allLogos)
-  const columns: Logo[][] = Array.from({ length: columnCount }, () => [])
-
-  shuffled.forEach((logo, index) => {
-    columns[index % columnCount].push(logo)
-  })
-
-  const maxLength = Math.max(...columns.map((col) => col.length))
-  columns.forEach((col) => {
-    while (col.length < maxLength) {
-      col.push(shuffled[Math.floor(Math.random() * shuffled.length)])
-    }
-  })
-
-  return columns
-}
-
-const LogoColumn: React.FC<LogoColumnProps> = React.memo(
-  ({ logos, index, currentTime }) => {
-    const cycleInterval = 2000
-    const columnDelay = index * 200
-    const adjustedTime = (currentTime + columnDelay) % (cycleInterval * logos.length)
-    const currentIndex = Math.floor(adjustedTime / cycleInterval)
-    const currentLogo = logos[currentIndex]
-
-    return (
-      <motion.div
-        className="relative h-14 w-24 overflow-hidden md:h-24 md:w-48"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: index * 0.1,
-          duration: 0.5,
-          ease: "easeOut",
-        }}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${currentLogo.id}-${currentIndex}`}
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ y: "10%", opacity: 0, filter: "blur(8px)" }}
-            animate={{
-              y: "0%",
-              opacity: 1,
-              filter: "blur(0px)",
-              transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-                mass: 1,
-                bounce: 0.2,
-                duration: 0.5,
-              },
-            }}
-            exit={{
-              y: "-20%",
-              opacity: 0,
-              filter: "blur(6px)",
-              transition: {
-                type: "tween",
-                ease: "easeIn",
-                duration: 0.3,
-              },
-            }}
-          >
-            <img
-              src={currentLogo.img}
-              alt={currentLogo.name}
-              className="h-20 w-20 max-h-[80%] max-w-[80%] object-contain md:h-32 md:w-32"
-            />
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
-    )
-  }
-)
-
-interface LogoCarouselProps {
-  columnCount?: number
-  logos: Logo[]
-}
-
-const LogoCarousel: React.FC<LogoCarouselProps> = ({ columnCount = 2, logos }) => {
-  const [logoSets, setLogoSets] = useState<Logo[][]>([])
-  const [currentTime, setCurrentTime] = useState(0)
-
-  const updateTime = useCallback(() => {
-    setCurrentTime((prevTime) => prevTime + 100)
-  }, [])
-
-  useEffect(() => {
-    const intervalId = setInterval(updateTime, 100)
-    return () => clearInterval(intervalId)
-  }, [updateTime])
-
-  useEffect(() => {
-    const distributedLogos = distributeLogos(logos, columnCount)
-    setLogoSets(distributedLogos)
-  }, [logos, columnCount])
+  const logos: Logo[] = [
+    { name: "Vercel", id: 1, img: VercelLogo },
+    { name: "React", id: 2, img: ReactLogo },
+    { name: "Next.js", id: 3, img: NextJsLogo },
+    { name: "Tailwind CSS", id: 4, img: TailwindLogo },
+    { name: "Framer Motion", id: 5, img: FramerLogo },
+  ]
 
   return (
-    <div className="flex space-x-4">
-      {logoSets.map((logos, index) => (
-        <LogoColumn
-          key={index}
-          logos={logos}
-          index={index}
-          currentTime={currentTime}
-        />
-      ))}
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24">
+      <h1>Mon Tech Stack</h1>
+      <Card className="bg-black border-none">
+        <CardHeader>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center space-y-8">
+          <div className="flex justify-center">
+            <LogoCarousel logos={logos} columnCount={columnCount} />
+          </div>
+
+          <div className="flex flex-wrap gap-2 justify-center">
+            <motion.button 
+              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setColumnCount(2)}
+            >
+              2 Columns
+            </motion.button>
+            <motion.button 
+              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setColumnCount(3)}
+            >
+              3 Columns
+            </motion.button>
+            <motion.button 
+              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setColumnCount(4)}
+            >
+              4 Columns
+            </motion.button>
+            <motion.button 
+              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setColumnCount(5)}
+            >
+              5 Columns
+            </motion.button>
+          </div>
+        </CardContent>
+      </Card>
+    </main>
   )
 }
 
-export default LogoCarousel
-
-export { LogoColumn };

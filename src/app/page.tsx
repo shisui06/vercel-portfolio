@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { projectsData } from "@/data/projects";
 import ContactSection from "@/components/ContactSection";
-import LogoCarousel from "@/components/custom/LogoCarousel";
 import { Preview } from "@/components/ui/text-rotate";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
@@ -96,7 +95,6 @@ export default function Home() {
       <div id="contact" ref={sectionRefs[3]} className="min-h-screen">
         <ContactSection />
       </div>
-      <LogoCarousel logos={logos} />
       <Footer />
     </div>
   );
