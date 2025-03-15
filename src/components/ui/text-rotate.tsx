@@ -253,7 +253,7 @@ export { TextRotate }
 
 function Preview() {
   return (
-    <div className="w-full h-full text-2xl sm:text-3xl md:text-5xl flex flex-row items-center justify-center font-overusedGrotesk bg-white dark:text-muted text-foreground font-light overflow-hidden p-12 sm:p-20 md:p-24">
+    <div className="w-full h-full text-6xl sm:text-3xl  md:text-5xl flex flex-row items-center justify-center font-overusedGrotesk text-white  font-bold overflow-hidden p-12 sm:p-20 md:p-24">
       <LayoutGroup>
         <motion.p className="flex whitespace-pre" layout>
           <motion.span
@@ -261,19 +261,19 @@ function Preview() {
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
-            Make it{" "}
+            Welcome my beautiful{" "}
           </motion.span>
           <TextRotate
             texts={[
-              "work!",
-              "fancy ✽",
-              "right",
-              "fast",
-              "fun",
+              "Soul!",
+              "Entity ✽",
+              "Human",
+              "Creature",
+              "Friend",
               "rock",
               "🕶️🕶️🕶️",
             ]}
-            mainClassName="text-white px-2 sm:px-2 md:px-3 bg-[#ff5941] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            mainClassName="text-white px-2 sm:px-2 md:px-3 bg-[#A86BF6] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
@@ -283,6 +283,13 @@ function Preview() {
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
             rotationInterval={2000}
           />
+          <motion.span
+            className="pt-0.5 sm:pt-1 md:pt-2"
+            layout
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+          >
+            {" "}into my world
+          </motion.span>
         </motion.p>
       </LayoutGroup>
     </div>
