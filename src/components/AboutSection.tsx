@@ -33,26 +33,28 @@ const timelineData: TimelineEntry[] = [
 export default function AboutSection() {
   return (
     <section id="about" className="text-white relative z-10">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <div> 
-          <Image 
-            src="/images/about-image.jpg" 
-            width={600}
-            height={400}
-            className="rounded-xl object-cover w-full h-full" 
-            alt="About Me"
-          />
+      <div className="backdrop-blur-md bg-black/30 rounded-lg p-8">
+        <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+          <div> 
+            <Image 
+              src="/images/about-image.jpg" 
+              width={600}
+              height={400}
+              className="rounded-xl object-cover w-full h-full" 
+              alt="About Me"
+            />
+          </div>
+          <div>
+            <h1 className="text-4xl font-bold text-white mb-8">À propos de moi</h1>
+            <TextGenerateEffect words={aboutText} className="text-lg text-gray-400 mb-12" />
+          </div>
         </div>
-        <div>
-          <h1 className="text-4xl font-bold text-white mb-8">À propos de moi</h1>
-          <TextGenerateEffect words={aboutText} className="text-lg text-gray-400 mb-12" />
-        </div>
-      </div>
-      {/* Full-width Timeline with container */}
-      <div className="w-full px-4 py-12 relative z-10">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Mon Parcours</h2>
-          <Timeline data={timelineData} />
+        {/* Full-width Timeline with container */}
+        <div className="w-full px-4 py-12 relative z-10">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">Mon Parcours</h2>
+            <Timeline data={timelineData} />
+          </div>
         </div>
       </div>
     </section>
