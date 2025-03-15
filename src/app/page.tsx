@@ -9,6 +9,13 @@ import Footer from "@/components/Footer";
 import ProjectCard from "@/components/ProjectCard";
 import { projectsData } from "@/data/projects";
 import ContactSection from "@/components/ContactSection";
+import LogoCarousel from "@/components/custom/LogoCarousel";
+
+const logos = [
+  { img: "/logos/logo1.png", name: "Logo 1" },
+  { img: "/logos/logo2.png", name: "Logo 2" },
+  // Ajoutez d'autres logos ici
+];
 
 export default function Home() {
   const sectionRefs = [
@@ -46,16 +53,30 @@ export default function Home() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  return (
-    <div className="min-h-screen">
-      <div id="home" ref={sectionRefs[0]} className="h-screen">
-        <div className="container mx-auto px-4 py-16 text-center">
-          
-          {/* Section FlipWords */}
-          <div className="pt-8">
-            <FlipWordsDemo />
-          </div>
+  useEffect(() => {
+    const handleError = (error: ErrorEvent) => {
+      console.error("Unhandled error:", error);
+    };
 
+    window.addEventListener("error", handleError);
+    return () => window.removeEventListener("error", handleError);
+  }, []);
+
+  return (
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundImage: "url('/public/background/bg1.jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div id="home" ref={sectionRefs[0]} className="h-screen flex items-center justify-center">
+        <div className="container mx-auto px-4 text-center">
+          {/* Section FlipWords */}
+          <FlipWordsDemo />
+          
           {/* Section Boutons */}
           <div className="mt-8 space-x-4">
             <Link
@@ -76,6 +97,7 @@ export default function Home() {
       <div id="contact" ref={sectionRefs[3]} className="min-h-screen">
         <ContactSection />
       </div>
+      <LogoCarousel logos={logos} />
       <Footer />
     </div>
   );

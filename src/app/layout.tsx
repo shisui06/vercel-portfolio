@@ -2,7 +2,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Cinzel, Bebas_Neue, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import React from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
@@ -40,15 +40,23 @@ export default function RootLayout({
 }) {
   const handleSectionChange = (index: number) => {
     console.log("Section changed to:", index);
-    // Add any additional logic you want to handle when the section changes
+    
   };
 
   return (
     <html lang="fr" className="h-full">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased h-full bg-[url('/background/bg1.jpg')] bg-cover bg-center bg-fixed`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${bebasNeue.variable} ${cormorantGaramond.variable} antialiased h-full`}
+        style={{
+          backgroundImage: "url('/images/background/bg3.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+        }}
+      >
         <ErrorBoundary>
           <Navbar onSectionChange={handleSectionChange} />
-          <main className="pt-16 min-h-full">
+          <main className="relative z-10 pt-16 min-h-full">
             {children}
           </main>
         </ErrorBoundary>

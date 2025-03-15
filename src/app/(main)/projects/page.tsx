@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
+    <div className="min-h-screen text-white p-8">
       <div className="container mx-auto">
         <h1 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
           Mes projets

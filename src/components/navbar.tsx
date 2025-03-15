@@ -103,7 +103,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           {/* Logo */}
           <button 
             onClick={() => handleNavClick(0)}
-            className="text-2xl md:text-3xl font-bold text-white hover:text-purple-400 transition-colors"
+            className="text-6xl md:text-3xl font-bold text-white hover:text-purple-400 transition-colors"
           >
             Tamoor.
           </button>
@@ -117,7 +117,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(index)}
-                  className={`relative text-sm font-medium transition-colors ${
+                  className={`relative text-jg font-large transition-colors ${
                     isActive ? 'text-white' : 'text-gray-300 hover:text-white'
                   } ${isActive ? activeLinkStyle : ''}`}
                 >

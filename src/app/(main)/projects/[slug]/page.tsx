@@ -18,7 +18,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
         <p className="text-gray-400 text-lg">{project.description}</p>
-        <FlipWords words={words} className="text-2xl font-bold text-lime-400 mt-4" />
+        <FlipWords words={words} className="text-2xl font-bold text-white mt-4" />
       </div>
 
       {/* Section Technologies */}
