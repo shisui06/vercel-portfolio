@@ -108,26 +108,6 @@
   --sky-500: #0ea5e9;
 }
 
-.shimmer-button {
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-}
-
-.shimmer-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: all 0.3s ease;
-}
-
-.shimmer-button:hover::before {
-  left: 100%;
-}
 
 form {
   display: block !important;
@@ -136,8 +116,4 @@ form {
 html {
   scroll-behavior: smooth;
 }
-
-
-
-  
 

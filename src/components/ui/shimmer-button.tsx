@@ -9,18 +9,15 @@ export const ShimmerButton = ({
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <motion.button
-      className={`relative overflow-hidden px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 transition-all ${className}`}
+      className={`relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 ${className}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      {...props}
+      {...(props as React.ComponentProps<typeof motion.button>)}
     >
-      <span className="relative z-10">{children}</span>
-      <motion.div
-        className="absolute inset-0 bg-white/20"
-        initial={{ x: "-100%" }}
-        animate={{ x: "100%" }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-      />
+      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-8 py-3 text-sm font-medium text-white backdrop-blur-3xl">
+        {children}
+      </span>
     </motion.button>
   );
 }; 

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { projectsData } from "@/data/projects";
 import LogoCarousel from "@/components/custom/LogoCarousel";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 // Define your logos
 const logos = [
@@ -61,30 +62,24 @@ const ProjectsSection = () => {
             Mes projets
           </h2>
           <div className="px-4 flex gap-2 py-6 text-white sm:justify-center">
-            <button
+            <ShimmerButton
               onClick={() => handleTagChange("All")}
-              className={`px-4 py-2 rounded-full ${
-                tag === "All" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
-              }`}
+              className={`${tag === "All" ? "bg-lime-400 text-black" : ""}`}
             >
               All
-            </button>
-            <button
+            </ShimmerButton>
+            <ShimmerButton
               onClick={() => handleTagChange("Web")}
-              className={`px-4 py-2 rounded-full ${
-                tag === "Web" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
-              }`}
+              className={`${tag === "Web" ? "bg-lime-400 text-black" : ""}`}
             >
               Web
-            </button>
-            <button
+            </ShimmerButton>
+            <ShimmerButton
               onClick={() => handleTagChange("Mobile")}
-              className={`px-4 py-2 rounded-full ${
-                tag === "Mobile" ? "bg-lime-400 text-black" : "bg-gray-800 text-white"
-              }`}
+              className={`${tag === "Mobile" ? "bg-lime-400 text-black" : ""}`}
             >
               Mobile
-            </button>
+            </ShimmerButton>
           </div>
           <div className="grid md:grid-cols-3 gap-8 md:gap-12 p-4">
             {filteredProjects.map((project, index) => (

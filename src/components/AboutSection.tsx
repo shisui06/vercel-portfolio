@@ -3,13 +3,14 @@ import Image from 'next/image';
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import TimelineDemo from "@/components/ui/timeline-demo";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 interface TimelineEntry {
   title: string;
   content: string;
 }
 
-const aboutText = "Je suis un développeur web débutant, passionné par la création d'applications web interactives. J'aime apprendre de nouvelles technologies et m'adapter rapidement à différents environnements de travail. J'ai déjà participé à des projets en équipe, ce qui m'a permis de découvrir les méthodes agiles comme Scrum et Kanban pour organiser le travail et livrer des fonctionnalités de manière continue. Je suis motivé par l'idée de relever de nouveaux défis et de travailler avec des équipes dynamiques pour créer des solutions web utiles. Mon objectif est de continuer à apprendre et de contribuer activement aux projets auxquels je participe.Je me suis rendu compte que j'aimer ca travailler en équipe mais je ne savais pas comment c'en game chnage pour moi d'etre capable de entraider et avoir du fun .Je remercie les gens que j'ai coloborer du fond de mon cours il m'ont apris et mon supporter qui ma grandement aider.Je ne plus jamais traviller sans une équip.e ";
+const aboutText = "Je suis un développeur web débutant, passionné par la création d'applications web interactives. J'aime apprendre de nouvelles technologies et m'adapter rapidement à différents environnements de travail. J'ai déjà participé à des projets en équipe, ce qui m'a permis de découvrir les méthodes agiles comme Scrum et Kanban pour organiser le travail et livrer des fonctionnalités de manière continue. Je suis motivé par l'idée de relever de nouveaux défis et de travailler avec des équipes dynamiques pour créer des solutions web utiles. Mon objectif est de continuer à apprendre et de contribuer activement aux projets auxquels je participe.";
 
 const timelineData: TimelineEntry[] = [
   {
@@ -40,6 +41,9 @@ export default function AboutSection() {
             <div>
               <h1 className="text-4xl font-bold text-white mb-8 font-cinzel">À propos de moi</h1>
               <TextGenerateEffect words={aboutText} className="text-lg text-white mb-12 font-cinzel" />
+              <ShimmerButton className="mt-4">
+                Learn More
+              </ShimmerButton>
             </div>
           </div>
           {/* Full-width Timeline with container */}

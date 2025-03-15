@@ -11,6 +11,7 @@ import { projectsData } from "@/data/projects";
 import ContactSection from "@/components/ContactSection";
 import LogoCarousel from "@/components/custom/LogoCarousel";
 import { Preview } from "@/components/ui/text-rotate";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const logos = [
   { img: "/public/images/stackicon/css.png", name: "Logo 1" },
@@ -80,12 +81,9 @@ export default function Home() {
           
           {/* Section Boutons */}
           <div className="mt-8 space-x-4">
-            <Link
-              href="#contact"
-              className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition-colors"
-            >
+            <ShimmerButton className="mt-8">
               Me contacter
-            </Link>
+            </ShimmerButton>
           </div>
         </div>
       </div>

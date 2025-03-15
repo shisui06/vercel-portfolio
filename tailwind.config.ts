@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
+import type { Config } from 'tailwindcss';
 
 export default {
     darkMode: ["class"],
@@ -62,18 +62,32 @@ export default {
   		},
   		fontFamily: {
   			cinzel: ['var(--font-cinzel)', 'serif'],
-  			bebasNeue: [
-  				'var(--font-bebas-neue)'
-  			],
-  			cormorantGaramond: [
-  				'var(--font-cormorant-garamond)'
-  			]
+  			bebasNeue: ['var(--font-bebas-neue)'],
+  			cormorantGaramond: ['var(--font-cormorant-garamond)']
   		},
   		backgroundImage: {
   			'grid-pattern': 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
   			'grid-pattern-light': 'linear-gradient(to right, #ccc 1px, transparent 1px), linear-gradient(to bottom, #ccc 1px, transparent 1px)'
+  		},
+  		animation: {
+  			spin: "spin 2s linear infinite",
+  			shimmer: "shimmer 2s linear infinite"
+  		},
+  		keyframes: {
+  			spin: {
+  				from: { transform: "rotate(0deg)" },
+  				to: { transform: "rotate(360deg)" }
+  			},
+  			shimmer: {
+  				from: {
+  					backgroundPosition: "0 0"
+  				},
+  				to: {
+  					backgroundPosition: "-200% 0"
+  				}
+  			}
   		}
   	}
   },
-  plugins: [animate],
+  plugins: [animate]
 } satisfies Config;
