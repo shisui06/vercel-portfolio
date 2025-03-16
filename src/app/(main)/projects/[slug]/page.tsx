@@ -14,9 +14,12 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
 
   return (
     <div className="container mx-auto p-4 space-y-12">
+      <h1 className="text-center text-4xl font-bold text-white mb-8">
+        Détails du projet
+      </h1>
       {/* Section Titre et Description */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+        <h2 className="text-4xl font-bold mb-4">{project.title}</h2>
         <p className="text-gray-400 text-lg">{project.description}</p>
         <FlipWords words={words} className="text-2xl font-bold text-white mt-4" />
       </div>

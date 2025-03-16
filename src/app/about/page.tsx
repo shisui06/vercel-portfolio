@@ -17,7 +17,7 @@ export default function About() {
           className="text-lg text-white mb-12"
           duration={0.5} // Adjust speed as needed
         />
-        <h2 className="text-3xl font-bold text-white mb-8">Mon Parcours</h2>
+        <h2 className="text-5xl font-bold text-white mb-8">Mon Parcours</h2>
         <Timeline data={timelineData} />
         <LogoCarousel logos={logos} />
       </div>

@@ -14,7 +14,7 @@ export function ProjectsSection() {
   ];
 
   const filteredProjects = projectsData.filter((project) =>
-    filter === "All" ? true : project.tags.includes(filter)
+    filter === "All" ? true : project.tag.includes(filter)
   );
 
   const handleFilter = (tag: string) => {
@@ -24,19 +24,22 @@ export function ProjectsSection() {
   return (
     <section className="w-full min-h-screen py-12">
       <div className="w-full px-4 mx-auto">
+        <h1 className="text-center text-5xl font-bold text-white mb-8">
+          Mes projets
+        </h1>
         <div className="px-4 flex gap-2 py-6 text-white sm:justify-center bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl mb-8 z-10 relative">
           <ProjectTag
-            onClick={(tag) => handleFilter(tag)}
+            onClick={() => handleFilter("All")}
             name="All"
             isSelected={filter === "All"}
           />
           <ProjectTag
-            onClick={(tag) => handleFilter(tag)}
+            onClick={() => handleFilter("Web")}
             name="Web"
             isSelected={filter === "Web"}
           />
           <ProjectTag
-            onClick={(tag) => handleFilter(tag)}
+            onClick={() => handleFilter("Mobile")}
             name="Mobile"
             isSelected={filter === "Mobile"}
           />

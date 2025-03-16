@@ -46,7 +46,7 @@ export default function AboutSection() {
           {/* Full-width Timeline with container */}
           <div className="w-full px-4 py-12 relative z-10">
             <div className="container mx-auto">
-              <h2 className="text-3xl font-bold text-white mb-8 text-center font-cinzel">Mon Parcours</h2>
+              <h2 className="text-5xl font-bold text-white mb-8 text-center font-cinzel">Mon Parcour</h2>
               <TimelineDemo />
             </div>
           </div>
