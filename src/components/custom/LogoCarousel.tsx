@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
 
 export default function Home() {
-  const [columnCount, setColumnCount] = useState(5)
+  const columnCount = 5;
 
   const logos: Logo[] = [
     
@@ -107,41 +107,6 @@ export default function Home() {
         <CardContent className="flex flex-col items-center space-y-8">
           <div className="flex justify-center">
             <LogoCarousel logos={logos} columnCount={columnCount} />
-          </div>
-
-          <div className="flex flex-wrap gap-2 justify-center">
-            <motion.button 
-              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setColumnCount(2)}
-            >
-              2 Columns
-            </motion.button>
-            <motion.button 
-              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setColumnCount(3)}
-            >
-              3 Columns
-            </motion.button>
-            <motion.button 
-              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setColumnCount(4)}
-            >
-              4 Columns
-            </motion.button>
-            <motion.button 
-              className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setColumnCount(5)}
-            >
-              5 Columns
-            </motion.button>
           </div>
         </CardContent>
       </Card>
