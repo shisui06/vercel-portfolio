@@ -152,9 +152,15 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
               </button>
             </div>
 
-            <button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Enbaucher-moi
-            </button>
+            <ShimmerButton className="bg-gradiet-white pxion-all duration-300 shadow-lg hover:shadow-xl">
+              Embaucher-moi !
+            </ShimmerButton>
+            
+            
+            
+           
+          
+          
           </div>
         </div>
 

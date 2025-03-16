@@ -22,7 +22,7 @@ export default function ProjectsPage() {
         <h1 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
           Mes projets
         </h1>
-        <div className="px-4 flex gap-2 py-6 text-white sm:justify-center">
+        <div className="px-4 flex gap-2 py-6 text-white sm:justify-center bg-gray-800/50 rounded-lg">
           <ProjectTag
             onClick={handleTagChange}
             name="All"
