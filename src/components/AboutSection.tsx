@@ -27,7 +27,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="text-white relative z-10">
       <TracingBeam>
-        <div className="backdrop-blur-md bg-black/30 rounded-lg p-8">
+        <div className="backdrop-blur-md rounded-lg p-8">
           <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
             <div> 
               <Image 

@@ -47,7 +47,7 @@ export default function ProjectCard({
         <div className="h-[250px] relative flex justify-center items-center">
           <Image
             alt={title}
-            className="object-cover"
+            className="object-none"
             src={imgUrl}
             width={400}
             height={250}
