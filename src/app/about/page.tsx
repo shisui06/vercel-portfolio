@@ -2,7 +2,6 @@
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { LogoCarousel } from "@/components/logo-carousel";
 
 export default function About() {

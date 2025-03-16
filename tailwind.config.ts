@@ -86,7 +86,10 @@ export default {
   					backgroundPosition: "-200% 0"
   				}
   			}
-  		}
+  		},
+  		fontSize: {
+  			base: '22px',
+  		},
   	}
   },
   plugins: [animate]

@@ -41,9 +41,6 @@ export default function AboutSection() {
             <div>
               <h1 className="text-4xl font-bold text-white mb-8 font-cinzel">À propos de moi</h1>
               <TextGenerateEffect words={aboutText} className="text-lg text-white mb-12 font-cinzel" />
-              <ShimmerButton className="mt-4">
-                Learn More
-              </ShimmerButton>
             </div>
           </div>
           {/* Full-width Timeline with container */}

@@ -34,31 +34,41 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const handleNavClick = (index: number) => {
-    onSectionChange(index);
-    
-    // Handle home click
-    if (index === 0) {
-      if (window.location.pathname !== "/") {
-        // Navigate to the main page
-        window.location.href = "/";
-      } else {
-        // Scroll to the top
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    try {
+      onSectionChange(index);
+      
+      // Handle home click
+      if (index === 0) {
+        if (window.location.pathname !== "/") {
+          // Navigate to the main page
+          window.location.href = "/";
+        } else {
+          // Scroll to the top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        return;
       }
-      return;
-    }
 
-    const sectionId = navItems[index].path.slice(1);
-    if (window.location.pathname === "/") {
-      // Single-page behavior
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", `/#${sectionId}`);
+      const sectionId = navItems[index].path.slice(1);
+      if (sectionId === "contact") {
+        // Directly navigate to the contact section
+        window.location.href = "/#contact";
+        return;
       }
-    } else {
-      // Navigate to the main page with the correct hash
-      window.location.href = `/#${sectionId}`;
+
+      if (window.location.pathname === "/") {
+        // Single-page behavior
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", `/#${sectionId}`);
+        }
+      } else {
+        // Navigate to the main page with the correct hash
+        window.location.href = `/#${sectionId}`;
+      }
+    } catch (error) {
+      console.error("Error in handleNavClick:", error);
     }
   };
 
@@ -142,8 +152,8 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
               </button>
             </div>
 
-            <button className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200">
-              Embauchez-Moi
+            <button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+              Enbaucher-moi
             </button>
           </div>
         </div>

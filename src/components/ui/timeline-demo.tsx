@@ -3,46 +3,67 @@ import { Timeline } from "@/components/ui/timeline"
 export default function TimelineDemo() {
   const data = [
     {
-      title: "ADT 2016 - 2024",
+      title: "ADT",
       content: (
-        <div>
-          <p className="text-white text-5xl md:text-sm font-normal mb-8">
-            - Diagnostiquer les problèmes avec le système d'alarme ainsi que les produits d'automatisation 
+        <div className="text-base">
+          <p className="font-bold mb-4">
+            Représentant du service clientèle 2016 - 2024
           </p>
-          <p className="text-white text-xl md:text-sm font-normal mb-8">
-            - Résoudre le problème le plus rapidement possible et offrir une expérience client extraordinaire 
-            
-            - Prendre rendez-vous pour les techniciens sur la route
-
+          <p className="mb-4">
+            - Diagnostiquer les problèmes avec le système d'alarme ainsi que les produits d'automatisation
+          </p>
+          <p className="mb-4">
+            - Résoudre le problème le plus rapidement possible et offrir une expérience client extraordinaire
+          </p>
+          <p className="mb-4">
+            - Travailler efficacement et en étroite collaboration avec plusieurs services et faire preuve de leadership
           </p>
           <p>
-          - Travailler efficacement et en étroite collaboration avec plusieurs services et faire preuve de leadership 
+            - Prendre rendez-vous pour les techniciens sur la route
           </p>
-         
         </div>
       ),
     },
     {
       title: "Garderie Educative Joliette ",
       content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            I usually run out of copy, but when I see content this big, I try to integrate lorem ipsum.
+        <div className="text-base">
+          <p className="font-bold mb-4">
+            Représentant du service clientèle
           </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Lorem ipsum is for people who are too lazy to write copy. But we are not. Here are some more example of
-            beautiful designs I built.
+          <p className="mb-4">
+            - Diagnostiquer les problèmes avec le système d'alarme ainsi que les produits d'automatisation
           </p>
-        
+          <p className="mb-4">
+            - Résoudre le problème le plus rapidement possible et offrir une expérience client extraordinaire
+          </p>
+          <p className="mb-4">
+            - Travailler efficacement et en étroite collaboration avec plusieurs services et faire preuve de leadership
+          </p>
+          <p>
+            - Prendre rendez-vous pour les techniciens sur la route
+          </p>
         </div>
       ),
     },
     {
       title: "Bestbuy",
       content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-            Deployed 5 new components on Aceternity today
+        <div className="text-base">
+          <p className="font-bold mb-4">
+            Représentant du service clientèle
+          </p>
+          <p className="mb-4">
+            - Diagnostiquer les problèmes avec le système d'alarme ainsi que les produits d'automatisation
+          </p>
+          <p className="mb-4">
+            - Résoudre le problème le plus rapidement possible et offrir une expérience client extraordinaire
+          </p>
+          <p className="mb-4">
+            - Travailler efficacement et en étroite collaboration avec plusieurs services et faire preuve de leadership
+          </p>
+          <p>
+            - Prendre rendez-vous pour les techniciens sur la route
           </p>
         </div>
       ),
