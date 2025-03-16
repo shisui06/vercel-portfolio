@@ -80,27 +80,13 @@ export default function Home() {
                   />
                 )
               },
-
-
-
-
-
-    { name: "React", id: 2, img: ReactLogo },
-    { name: "Next.js", id: 3, img: NextJsLogo },
-    { name: "Tailwind CSS", id: 4, img: TailwindLogo },
-    { name: "Framer Motion", id: 5, img: FramerLogo },
-  ]
-
-
-
-
-
-
-
+]
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24">
-      <h1>Mon Tech Stack</h1>
+      <h1 className="text-4xl font-bold text-white mb-8">
+        Mon Tech Stack
+      </h1>
       <Card className="bg-black border-none">
         <CardHeader>
         </CardHeader>
