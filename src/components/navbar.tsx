@@ -16,7 +16,7 @@ const navItems = [
   },
   {
     name: "Projets",
-    path: "/projects",
+    path: "/#projects",
   },
   {
     name: "Contact",

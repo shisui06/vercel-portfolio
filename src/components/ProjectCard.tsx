@@ -24,22 +24,17 @@ export default function ProjectCard({
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // If already on the main page, scroll to the project section
-    if (window.location.pathname === "/") {
-      const projectSection = document.getElementById("projects");
-      if (projectSection) {
-        projectSection.scrollIntoView({ behavior: "smooth" });
-        // Update URL hash
-        window.history.pushState(null, "", `/#projects`);
-      }
-    } else {
-      // Navigate to the dynamic project page
-      router.push(`/projects/${slug}`);
+    // Always scroll to the project section on the home page
+    const projectSection = document.getElementById("projects");
+    if (projectSection) {
+      projectSection.scrollIntoView({ behavior: "smooth" });
+      // Update URL hash
+      window.history.pushState(null, "", `/#projects`);
     }
   };
 
   return (
-    <Link href={`/projects/${slug}`}>
+    <Link href="/#projects">
       <div
         onClick={handleClick}
         className="rounded-xl overflow-hidden shadow-lg bg-[#181818] w-full h-[400px] flex flex-col cursor-pointer hover:scale-105 transition-transform"
