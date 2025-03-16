@@ -3,7 +3,7 @@
 export default function ContactSection() {
   return (
     <section id="contact" className="min-h-screen py-12 ">
-      <div className="backdrop-blur-md bg-black/30 rounded-lg p-8">
+      <div className="bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl p-8">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-white text-center mb-8">Contactez-moi</h2>
           <form className="max-w-2xl mx-auto">

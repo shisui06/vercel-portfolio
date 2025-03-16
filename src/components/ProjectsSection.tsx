@@ -52,7 +52,7 @@ export function ProjectsSection() {
               description={project.description}
               imageUrl={project.image}
               link={`/#projects`}
-              className="hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black border-gray-800"
+              className="hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl"
             />
           ))}
         </div>

@@ -113,7 +113,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-white mb-8">
         Mon Tech Stack
       </h1>
-      <Card className="bg-black border-none">
+      <Card className="bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl">
         <CardHeader>
         </CardHeader>
         <CardContent className="flex flex-col items-center space-y-8">
