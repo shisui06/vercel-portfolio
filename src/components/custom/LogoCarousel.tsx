@@ -11,24 +11,92 @@ export default function Home() {
   const [columnCount, setColumnCount] = useState(5)
 
   const logos: Logo[] = [
-    { 
-      name: "Figma", 
-      id: 6, 
+    
+
+    { name: "Html", 
+      id: 1, 
       img: () => (
         <img 
-          src="/images/stackicon/figma.svg" 
-          alt="Figma" 
-          className="w-8 h-8"
+          src="/images/stackicon/html.svg" 
+          alt="html" 
+          className="w-20 h-20"
           style={{ objectFit: 'contain' }}
         />
       )
-    },
-    { name: "Vercel", id: 1, img: VercelLogo },
+      },
+      { name: "css", 
+        id: 1, 
+        img: () => (
+          <img 
+            src="/images/stackicon/css.png" 
+            alt="css" 
+            className="w-20 h-20"
+            style={{ objectFit: 'contain' }}
+          />
+        )
+        },
+        { name: "js", 
+          id: 1, 
+          img: () => (
+            <img 
+              src="/images/stackicon/js.png" 
+              alt="javascript" 
+              className="w-20 h-20"
+              style={{ objectFit: 'contain' }}
+            />
+          )
+          },
+          { name: "react", 
+            id: 1, 
+            img: () => (
+              <img 
+                src="/images/stackicon/react.png" 
+                alt="raect" 
+                className="w-20 h-20"
+                style={{ objectFit: 'contain' }}
+              />
+            )
+            },
+            { name: "Html", 
+              id: 1, 
+              img: () => (
+                <img 
+                  src="/images/stackicon/html.svg" 
+                  alt="html" 
+                  className="w-20 h-20"
+                  style={{ objectFit: 'contain' }}
+                />
+              )
+              },
+              { 
+                name: "Figma", 
+                id: 6, 
+                img: () => (
+                  <img 
+                    src="/images/stackicon/figma.svg" 
+                    alt="Figma" 
+                    className="w-8 h-8"
+                    style={{ objectFit: 'contain' }}
+                  />
+                )
+              },
+
+
+
+
+
     { name: "React", id: 2, img: ReactLogo },
     { name: "Next.js", id: 3, img: NextJsLogo },
     { name: "Tailwind CSS", id: 4, img: TailwindLogo },
     { name: "Framer Motion", id: 5, img: FramerLogo },
   ]
+
+
+
+
+
+
+
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24">
