@@ -22,7 +22,7 @@ export function ProjectsSection() {
   };
 
   return (
-    <section className="w-full min-h-screen py-12">
+    <section id="projects" className="w-full min-h-screen py-12">
       <div className="w-full px-4 mx-auto">
         <h1 className="text-center text-5xl font-bold text-white mb-8">
           Mes projets

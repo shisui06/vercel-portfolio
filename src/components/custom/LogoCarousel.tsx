@@ -46,6 +46,7 @@ export default function Home() {
             />
           )
           },
+          
           { name: "react", 
             id: 1, 
             img: () => (
@@ -57,29 +58,54 @@ export default function Home() {
               />
             )
             },
-            { name: "Html", 
+
+            { name: "tailwind", 
               id: 1, 
               img: () => (
                 <img 
-                  src="/images/stackicon/html.svg" 
-                  alt="html" 
+                  src="/images/stackicon/tailwind.png" 
+                  alt="tailwind" 
+                  className="w-20 h-20"
+                  style={{ objectFit: 'contain' }}
+                />
+              )
+              },
+
+            { name: "nextjs", 
+              id: 1, 
+              img: () => (
+                <img 
+                  src="/images/stackicon/next.js.svg" 
+                  alt="nextjs" 
                   className="w-20 h-20"
                   style={{ objectFit: 'contain' }}
                 />
               )
               },
               { 
-                name: "Figma", 
+                name: "MySQL", 
                 id: 6, 
                 img: () => (
                   <img 
-                    src="/images/stackicon/figma.svg" 
-                    alt="Figma" 
-                    className="w-8 h-8"
+                    src="/images/stackicon/mysql.svg" 
+                    alt="mysql" 
+                    className="w-22 h-22"
                     style={{ objectFit: 'contain' }}
                   />
                 )
               },
+              { 
+                name: "mongodb", 
+                id: 6, 
+                img: () => (
+                  <img 
+                    src="/images/stackicon/mongodb.svg" 
+                    alt="mongodb" 
+                    className="w-20 h-20"
+                    style={{ objectFit: 'contain' }}
+                  />
+                )
+              }
 ]
 
   return (

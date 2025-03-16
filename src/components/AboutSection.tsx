@@ -31,7 +31,7 @@ export default function AboutSection() {
           <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
             <div> 
               <Image 
-                src="/images/about-image.jpg" 
+                src="/images/webdevpic.jpg" 
                 width={600}
                 height={400}
                 className="rounded-xl object-cover w-full h-full" 

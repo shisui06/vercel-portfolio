@@ -17,6 +17,13 @@ const navItems = [
   {
     name: "Projets",
     path: "/#projects",
+    onClick: () => {
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", "/#projects");
+      }
+    }
   },
   {
     name: "Contact",
@@ -122,7 +129,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => {
               const sectionId = item.path.slice(1);
-              const isActive = activeSection === sectionId;
+              const isActive = activeSection === sectionId || (sectionId === "#projects" && activeSection === "projects");
               return (
                 <button
                   key={item.path}
@@ -174,7 +181,8 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-sm">
               {navItems.map((item, index) => {
-                const isActive = pathname === item.path;
+                const sectionId = item.path.slice(1);
+                const isActive = pathname === item.path || (sectionId === "#projects" && activeSection === "projects");
                 return (
                   <button
                     key={item.path}

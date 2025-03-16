@@ -25,11 +25,11 @@ export default function TimelineDemo() {
       ),
     },
     {
-      title: "Garderie Educative Joliette 2012-2015 ",
+      title: "Garderie Educative Joliette",
       content: (
         <div className="text-base">
           <p className="font-bold mb-4">
-          Adjointe Administrative
+          Adjointe Administrative 2012-2015
           </p>
           <p className="mb-4">
             - Accueillir les nouveaux parents de manière professionnelle et atteindre le taux d'occupation
