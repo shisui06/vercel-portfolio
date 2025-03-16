@@ -11,6 +11,18 @@ export default function Home() {
   const [columnCount, setColumnCount] = useState(5)
 
   const logos: Logo[] = [
+    { 
+      name: "Figma", 
+      id: 6, 
+      img: () => (
+        <img 
+          src="/images/stackicon/figma.svg" 
+          alt="Figma" 
+          className="w-8 h-8"
+          style={{ objectFit: 'contain' }}
+        />
+      )
+    },
     { name: "Vercel", id: 1, img: VercelLogo },
     { name: "React", id: 2, img: ReactLogo },
     { name: "Next.js", id: 3, img: NextJsLogo },
