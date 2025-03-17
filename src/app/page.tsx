@@ -2,7 +2,7 @@
 import { TextRotate } from "@/components/ui/text-rotate";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
@@ -12,56 +12,14 @@ import ContactSection from "@/components/ContactSection";
 import { Preview } from "@/components/ui/text-rotate";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
-const logos = [
-  { img: "/public/images/stackicon/css.png", name: "Logo 1" },
-  { img: "/logos/logo2.png", name: "Logo 2" },
-  // Ajoutez d'autres logos ici
-];
-
 export default function Home() {
   const sectionRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null)
-  ];
-
-  const handleScroll = () => {
-    try {
-      // Add logic to detect which section is in view and change background
-    } catch (error) {
-      console.error("Error in scroll handler:", error);
-    }
-  };
-
-
-  useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const section = document.getElementById(hash.slice(1));
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-
+    useRef(null),
     
-    handleHash();
-
-  
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
-
-  useEffect(() => {
-    const handleError = (error: ErrorEvent) => {
-      console.error("Unhandled error:", error);
-    };
-
-    window.addEventListener("error", handleError);
-    return () => window.removeEventListener("error", handleError);
-  }, []);
+    useRef(null),
+    useRef(null),
+    useRef(null)
+  ];
 
   return (
     <div 
@@ -80,7 +38,19 @@ export default function Home() {
           
           {/* Section Boutons */}
           <div className="mt-8 space-x-4">
-            <ShimmerButton className="mt-8">
+            <ShimmerButton 
+              onClick={() => {
+                console.log('Contact button clicked!');
+                setTimeout(() => {
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState(null, "", "/#contact");
+                  }
+                }, 100); // Délai de 100 ms
+              }}
+              className="mt-8"
+            >
               Me contacter
             </ShimmerButton>
           </div>

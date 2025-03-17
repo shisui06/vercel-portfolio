@@ -1,6 +1,28 @@
 "use client";
+import { useEffect } from "react";
 
 export default function ContactSection() {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.location.hash === "#contact") {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+          // Add small delay to ensure section is rendered
+          setTimeout(() => {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleScroll);
+    return () => window.removeEventListener("hashchange", handleScroll);
+  }, []);
+
   return (
     <section id="contact" className="min-h-screen py-12 ">
       <div className="bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl p-8">

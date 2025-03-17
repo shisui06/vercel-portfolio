@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
@@ -39,6 +39,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleNavClick = (index: number) => {
     try {
@@ -129,7 +130,8 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
               const isActive = 
                 activeSection === sectionId || 
                 (sectionId === "#projects" && activeSection === "projects") ||
-                (sectionId === "" && activeSection === "home");
+                (sectionId === "" && activeSection === "home") ||
+                pathname === item.path;
               return (
                 <button
                   key={item.path}
@@ -159,15 +161,33 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
               </button>
             </div>
 
-            <ShimmerButton className="bg-gradiet-white pxion-all duration-300 shadow-lg hover:shadow-xl">
+            <ShimmerButton 
+              onClick={async () => {
+                console.log('Button clicked!');
+                if (window.location.pathname === "/") {
+                  // Scroll to contact section
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState(null, "", "/#contact");
+                  }
+                } else {
+                  // Redirect to home page with contact hash
+                  window.location.href = "/#contact";
+                  // Force scroll after page load
+                  window.onload = () => {
+                    const contactSection = document.getElementById("contact");
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  };
+                }
+              }}
+              className="bg-gradiet-white pxion-all duration-300 shadow-lg hover:shadow-xl"
+            >
               Embaucher-moi !
             </ShimmerButton>
             
-            
-            
-           
-          
-          
           </div>
         </div>
 
