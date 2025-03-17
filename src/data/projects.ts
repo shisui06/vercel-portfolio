@@ -5,8 +5,8 @@ export const projectsData = [
     description: "Plateforme pour connecter les OBNL avec les bénévoles",
     image: "/images/projects/benactor.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://www.benactor.com/",
+    previewUrl: "https://www.benactor.com/",
   },
   {
     id: 2,

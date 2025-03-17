@@ -54,6 +54,8 @@ export const ThreeDCard = React.forwardRef<HTMLDivElement, ThreeDCardProps>(
         {link && (
           <motion.a
             href={link}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-4 inline-block px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 transition-colors"
             whileHover={{ translateZ: 20 }}
           >

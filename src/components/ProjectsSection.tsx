@@ -51,7 +51,7 @@ export function ProjectsSection() {
               title={project.title}
               description={project.description}
               imageUrl={project.image}
-              link={`/#projects`}
+              link={project.previewUrl}
               className="hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-black/80 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl"
             />
           ))}
