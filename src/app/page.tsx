@@ -59,7 +59,7 @@ export default function Home() {
       <div id="about" ref={sectionRefs[1]} className="min-h-screen">
         <AboutSection />
       </div>
-      <div id="projects" ref={sectionRefs[2]} className="min-h-screen">
+      <div id="projects" className="min-h-screen">
         <ProjectsSection />
       </div>
       <div id="contact" ref={sectionRefs[3]} className="min-h-screen">

@@ -56,6 +56,21 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
         return;
       }
 
+      // Handle projects section
+      if (navItems[index].path === "/#projects") {
+        if (window.location.pathname === "/") {
+          const projectsSection = document.getElementById("projects");
+          if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(null, "", "/#projects");
+            setActiveSection("projects");
+          }
+        } else {
+          window.location.href = "/#projects";
+        }
+        return;
+      }
+
       // Handle other sections
       const sectionId = navItems[index].path.slice(1);
       if (window.location.pathname === "/") {
@@ -63,6 +78,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
           window.history.pushState(null, "", `/#${sectionId}`);
+          setActiveSection(sectionId);
         }
       } else {
         window.location.href = `/#${sectionId}`;
@@ -72,12 +88,12 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
     }
   };
 
-  // Handle scroll to update active section
+  // Update active section detection in the scroll handler
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => {
         if (item.path === "/") return "home";
-        return item.path.slice(1);
+        return item.path.slice(1).replace("#", "");
       });
       
       let foundActive = false;
@@ -97,9 +113,9 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
         }
       }
 
-      // If no section is active, default to home
+      // If no section is active, clear active section
       if (!foundActive) {
-        setActiveSection('home');
+        setActiveSection(null);
       }
     };
 
@@ -126,12 +142,11 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => {
-              const sectionId = item.path.slice(1);
+              const sectionId = item.path.slice(1).replace("#", "");
               const isActive = 
-                activeSection === sectionId || 
-                (sectionId === "#projects" && activeSection === "projects") ||
-                (sectionId === "" && activeSection === "home") ||
-                pathname === item.path;
+                activeSection === sectionId ||
+                (sectionId === "projects" && activeSection === "projects") ||
+                (sectionId === "" && activeSection === "home" && pathname === "/");
               return (
                 <button
                   key={item.path}
@@ -201,11 +216,11 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-sm">
               {navItems.map((item, index) => {
-                const sectionId = item.path.slice(1);
+                const sectionId = item.path.slice(1).replace("#", "");
                 const isActive = 
-                  activeSection === sectionId || 
-                  (sectionId === "#projects" && activeSection === "projects") ||
-                  (sectionId === "" && activeSection === "home");
+                  activeSection === sectionId ||
+                  (sectionId === "projects" && activeSection === "projects") ||
+                  (sectionId === "" && activeSection === "home" && pathname === "/");
                 return (
                   <button
                     key={item.path}

@@ -253,7 +253,7 @@ export { TextRotate }
 
 function Preview() {
   return (
-    <div className="w-full h-full text-8xl flex flex-col items-center justify-center font-overusedGrotesk text-white font-bold overflow-hidden p-12 sm:p-20 md:p-24">
+    <div className="w-full h-full text-4xl sm:text-6xl md:text-8xl flex flex-col items-center justify-center font-overusedGrotesk text-white font-bold overflow-hidden p-12 sm:p-20 md:p-24">
       <LayoutGroup>
         <motion.div className="flex flex-col whitespace-pre" layout>
           <motion.span
