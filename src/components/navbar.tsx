@@ -47,31 +47,40 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
       // Handle home click
       if (index === 0) {
         if (window.location.pathname !== "/") {
-          // Navigate to the main page
           window.location.href = "/";
         } else {
-          // Scroll to the top
           window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        return;
+      }
+
+      // Handle projects click
+      if (navItems[index].name === "Projets") {
+        if (window.location.pathname !== "/") {
+          window.location.href = "/#projects";
+        } else {
+          const projectsSection = document.getElementById("projects");
+          if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: "smooth" });
+            window.history.pushState(null, "", "/#projects");
+          }
         }
         return;
       }
 
       const sectionId = navItems[index].path.slice(1);
       if (sectionId === "contact") {
-        // Directly navigate to the contact section
         window.location.href = "/#contact";
         return;
       }
 
       if (window.location.pathname === "/") {
-        // Single-page behavior
         const section = document.getElementById(sectionId);
         if (section) {
           section.scrollIntoView({ behavior: "smooth" });
           window.history.pushState(null, "", `/#${sectionId}`);
         }
       } else {
-        // Navigate to the main page with the correct hash
         window.location.href = `/#${sectionId}`;
       }
     } catch (error) {
