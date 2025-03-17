@@ -253,25 +253,24 @@ export { TextRotate }
 
 function Preview() {
   return (
-    <div className="w-full h-full text-6xl sm:text-3xl  md:text-5xl flex flex-row items-center justify-center font-overusedGrotesk text-white  font-bold overflow-hidden p-12 sm:p-20 md:p-24">
+    <div className="w-full h-full text-9xl  flex flex-col items-center justify-center font-overusedGrotesk text-white  font-bold overflow-hidden p-12 sm:p-20 md:p-24">
       <LayoutGroup>
-        <motion.div className="flex whitespace-pre" layout>
+        <motion.div className="flex flex-col whitespace-pre" layout>
           <motion.span
             className="pt-0.5 sm:pt-1 md:pt-2"
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
-            Welcome my beautiful{" "}
+            Welcome my beautiful <br />
           </motion.span>
           <TextRotate
             texts={[
-              "Soul!",
+              "Soul !",
               "Entity ✽",
-              "Human",
+              "Human ",
               "Creature",
               "Friend",
-              "rock",
-              "🕶️🕶️🕶️",
+              "AI",
             ]}
             mainClassName="text-white px-2 sm:px-2 md:px-3 bg-[#A86BF6] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             staggerFrom={"last"}
