@@ -50,30 +50,13 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           window.location.href = "/";
         } else {
           window.scrollTo({ top: 0, behavior: "smooth" });
+          window.history.pushState(null, "", "/");
         }
         return;
       }
 
-      // Handle projects click
-      if (navItems[index].name === "Projets") {
-        if (window.location.pathname !== "/") {
-          window.location.href = "/#projects";
-        } else {
-          const projectsSection = document.getElementById("projects");
-          if (projectsSection) {
-            projectsSection.scrollIntoView({ behavior: "smooth" });
-            window.history.pushState(null, "", "/#projects");
-          }
-        }
-        return;
-      }
-
+      // Handle other sections
       const sectionId = navItems[index].path.slice(1);
-      if (sectionId === "contact") {
-        window.location.href = "/#contact";
-        return;
-      }
-
       if (window.location.pathname === "/") {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -91,17 +74,22 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   // Handle scroll to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.path.slice(1));
+      const sections = navItems.map((item) => {
+        if (item.path === "/") return "home";
+        return item.path.slice(1);
+      });
+      
       let foundActive = false;
       
       // Check sections from bottom to top
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
+        const sectionId = sections[i];
+        const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
           // More precise detection using 30% of viewport height
           if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.3) {
-            setActiveSection(sections[i]);
+            setActiveSection(sectionId);
             foundActive = true;
             break;
           }
@@ -138,7 +126,10 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => {
               const sectionId = item.path.slice(1);
-              const isActive = activeSection === sectionId || (sectionId === "#projects" && activeSection === "projects");
+              const isActive = 
+                activeSection === sectionId || 
+                (sectionId === "#projects" && activeSection === "projects") ||
+                (sectionId === "" && activeSection === "home");
               return (
                 <button
                   key={item.path}
@@ -191,7 +182,10 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-sm">
               {navItems.map((item, index) => {
                 const sectionId = item.path.slice(1);
-                const isActive = pathname === item.path || (sectionId === "#projects" && activeSection === "projects");
+                const isActive = 
+                  activeSection === sectionId || 
+                  (sectionId === "#projects" && activeSection === "projects") ||
+                  (sectionId === "" && activeSection === "home");
                 return (
                   <button
                     key={item.path}

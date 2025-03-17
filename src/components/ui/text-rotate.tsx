@@ -253,7 +253,7 @@ export { TextRotate }
 
 function Preview() {
   return (
-    <div className="w-full h-full text-9xl  flex flex-col items-center justify-center font-overusedGrotesk text-white  font-bold overflow-hidden p-12 sm:p-20 md:p-24">
+    <div className="w-full h-full text-8xl flex flex-col items-center justify-center font-overusedGrotesk text-white font-bold overflow-hidden p-12 sm:p-20 md:p-24">
       <LayoutGroup>
         <motion.div className="flex flex-col whitespace-pre" layout>
           <motion.span
@@ -272,7 +272,7 @@ function Preview() {
               "Friend",
               "AI",
             ]}
-            mainClassName="text-white px-2 sm:px-2 md:px-3 bg-[#A86BF6] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            mainClassName="text-white px-2 sm:px-2 md:px-3 bg-black/50 backdrop-blur-md overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
