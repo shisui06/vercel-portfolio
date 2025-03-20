@@ -14,7 +14,7 @@ import {
   Transition,
   LayoutGroup,
 } from "motion/react"
-import { User, Bot, Heart, Ghost, Alien } from 'lucide-react';
+import { FaHeart, FaGhost, FaUser, FaBug, FaRobot } from 'react-icons/fa';
 
 import { cn } from "@/lib/utils"
 
@@ -25,6 +25,8 @@ interface TextRotateProps {
   animate?: MotionProps["animate"]
   exit?: MotionProps["exit"]
   animatePresenceMode?: AnimatePresenceProps["mode"]
+
+  
   animatePresenceInitial?: boolean
   staggerDuration?: number
   staggerFrom?: "first" | "last" | "center" | number | "random"
@@ -48,6 +50,7 @@ export interface TextRotateRef {
 interface WordObject {
   characters: string[]
   needsSpace: boolean
+  icon?: JSX.Element
 }
 
 const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
@@ -87,21 +90,23 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
     }
 
     const elements = useMemo(() => {
-      const currentText = typeof texts[currentTextIndex] === 'string' 
-        ? texts[currentTextIndex] 
-        : texts[currentTextIndex].text;
+      const currentText = texts[currentTextIndex];
+      const text = typeof currentText === 'string' ? currentText : currentText.text;
+      const icon = typeof currentText === 'string' ? null : currentText.icon;
+
       if (splitBy === "characters") {
-        const text = currentText.split(" ");
-        return text.map((word, i) => ({
+        const words = text.split(" ");
+        return words.map((word, i) => ({
           characters: splitIntoCharacters(word),
-          needsSpace: i !== text.length - 1,
+          needsSpace: i !== words.length - 1,
+          icon: i === 0 ? icon : null,
         }));
       }
       return splitBy === "words"
-        ? currentText.split(" ")
+        ? text.split(" ")
         : splitBy === "lines"
-          ? currentText.split("\n")
-          : currentText.split(splitBy);
+          ? text.split("\n")
+          : text.split(splitBy);
     }, [texts, currentTextIndex, splitBy])
 
     const getStaggerDelay = useCallback(
@@ -218,6 +223,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                   key={wordIndex}
                   className={cn("inline-flex", splitLevelClassName)}
                 >
+                  {wordObj.icon && wordObj.icon}
                   {wordObj.characters.map((char, charIndex) => (
                     <motion.span
                       initial={initial}
@@ -236,7 +242,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                       }}
                       className={cn("inline-block", elementLevelClassName)}
                     >
-                      {typeof char === 'object' ? char : char}
+                      {char}
                     </motion.span>
                   ))}
                   {wordObj.needsSpace && (
@@ -270,12 +276,12 @@ function Preview() {
           </motion.span>
           <TextRotate
             texts={[
-              { text: "Soul !", icon: <Heart className="inline-block w-6 h-6" /> },
-              { text: "Entity ✽", icon: <Ghost className="inline-block w-6 h-6" /> },
-              { text: "Human", icon: <User className="inline-block w-6 h-6" /> },
-              { text: "Creature", icon: <Heart className="inline-block w-6 h-6" /> },
-              { text: "Friend", icon: <Heart className="inline-block w-6 h-6" /> },
-              { text: "AI", icon: <Bot className="inline-block w-6 h-6" /> },
+              { text: "Soul", icon: <FaHeart className="inline-block w-12 h-12" /> },
+              { text: "Entity", icon: <FaGhost className="inline-block w-12 h-12" /> },
+              { text: "Human", icon: <FaUser className="inline-block w-12 h-12" /> },
+              { text: "Creature", icon: <FaBug className="inline-block w-12 h-12" /> },
+              { text: "Friend", icon: <FaHeart className="inline-block w-12 h-12" /> },
+              { text: "AI", icon: <FaRobot className="inline-block w-12 h-12" /> },
             ]}
             mainClassName="text-white px-2 sm:px-3 md:px-4 lg:px-5 bg-black/50 backdrop-blur-md overflow-hidden py-0.5 sm:py-1 md:py-1.5 lg:py-2 justify-center rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
             staggerFrom={"last"}

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import TimelineDemo from "@/components/ui/timeline-demo";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
+
 
 interface TimelineEntry {
   title: string;

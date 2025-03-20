@@ -1,11 +1,7 @@
 "use client"
 
 import { LogoCarousel, type Logo } from "@/components/logo-carousel"
-import { VercelLogo, ReactLogo, NextJsLogo, TailwindLogo, FramerLogo } from "@/components/sample-logos"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
 export default function Home() {
   const columnCount = 5;
@@ -25,7 +21,7 @@ export default function Home() {
       )
       },
       { name: "css", 
-        id: 1, 
+        id: 2, 
         img: () => (
           <img 
             src="/images/stackicon/css.png" 
@@ -36,7 +32,7 @@ export default function Home() {
         )
         },
         { name: "js", 
-          id: 1, 
+          id: 3, 
           img: () => (
             <img 
               src="/images/stackicon/js.png" 
@@ -48,7 +44,7 @@ export default function Home() {
           },
           
           { name: "react", 
-            id: 1, 
+            id: 4, 
             img: () => (
               <img 
                 src="/images/stackicon/react.png" 
@@ -60,7 +56,7 @@ export default function Home() {
             },
 
             { name: "tailwind", 
-              id: 1, 
+              id: 5, 
               img: () => (
                 <img 
                   src="/images/stackicon/tailwind.png" 
@@ -72,7 +68,7 @@ export default function Home() {
               },
 
             { name: "nextjs", 
-              id: 1, 
+              id: 6, 
               img: () => (
                 <img 
                   src="/images/stackicon/next.js.svg" 
@@ -84,7 +80,7 @@ export default function Home() {
               },
               { 
                 name: "MySQL", 
-                id: 6, 
+                id: 7, 
                 img: () => (
                   <img 
                     src="/images/stackicon/mysql.svg" 
@@ -96,11 +92,23 @@ export default function Home() {
               },
               { 
                 name: "mongodb", 
-                id: 6, 
+                id: 8, 
                 img: () => (
                   <img 
                     src="/images/stackicon/mongodb.svg" 
                     alt="mongodb" 
+                    className="w-20 h-20"
+                    style={{ objectFit: 'contain' }}
+                  />
+                )
+              },
+              { 
+                name: "linux", 
+                id: 9, 
+                img: () => (
+                  <img 
+                    src="/images/stackicon/linux.svg" 
+                    alt="linux" 
                     className="w-20 h-20"
                     style={{ objectFit: 'contain' }}
                   />

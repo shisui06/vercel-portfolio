@@ -1,7 +1,7 @@
 # Portfolio
 
 ## Description
-This is a personal portfolio website built using **Next.js**, **Tailwind CSS**, and components from **shadcn**. The portfolio showcases my projects, skills, and experiences in a clean and modern design.
+This is a personal portfolio website built using **Next.js**, **Tailwind CSS**, and components from **Shadcn**. The portfolio showcases my projects, skills, and experiences in a clean and modern design.
 
 ## Installation
 1. Clone the repository:
@@ -20,7 +20,7 @@ This is a personal portfolio website built using **Next.js**, **Tailwind CSS**, 
 ## Usage
 Start the development server:
 ```bash
-npm run dev
+pnpm run dev
 ```
 Open your browser at `http://localhost:3000` to view the portfolio.
 
