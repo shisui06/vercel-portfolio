@@ -183,7 +183,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
 
     return (
       <motion.span
-        className={cn("flex flex-wrap whitespace-pre-wrap", mainClassName)}
+        className={cn("flex flex-wrap whitespace-pre-wrap mx-auto w-2/4 justify-center", mainClassName)}
         {...props}
         layout
         transition={transition}
@@ -206,6 +206,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
             )}
             layout
             aria-hidden="true"
+            style={{ overflow: "hidden" }}
           >
             {(splitBy === "characters"
               ? (elements as WordObject[])
@@ -219,16 +220,27 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                 .reduce((sum, word) => sum + word.characters.length, 0)
 
               return (
-                <span
+                <motion.span
                   key={wordIndex}
-                  className={cn("inline-flex", splitLevelClassName)}
+                  className={cn("inline-flex items-center", splitLevelClassName)}
+                  style={{ overflow: "hidden" }}
                 >
-                  {wordObj.icon && wordObj.icon}
-                  {wordObj.characters.map((char, charIndex) => (
+                  {wordObj.icon && (
                     <motion.span
+                      className="inline-flex items-center mr-2"
                       initial={initial}
                       animate={animate}
                       exit={exit}
+                      transition={transition}
+                    >
+                      {wordObj.icon}
+                    </motion.span>
+                  )}
+                  {wordObj.characters.map((char, charIndex) => (
+                    <motion.span
+                      initial={{ ...initial, y: "100%" }}
+                      animate={{ ...animate, y: 0 }}
+                      exit={{ ...exit, y: "-100%" }}
                       key={charIndex}
                       transition={{
                         ...transition,
@@ -241,6 +253,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                         ),
                       }}
                       className={cn("inline-block", elementLevelClassName)}
+                      style={{ display: "inline-block", whiteSpace: "pre" }}
                     >
                       {char}
                     </motion.span>
@@ -248,7 +261,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                   {wordObj.needsSpace && (
                     <span className="whitespace-pre"> </span>
                   )}
-                </span>
+                </motion.span>
               )
             })}
           </motion.div>
@@ -272,16 +285,16 @@ function Preview() {
             layout
             transition={{ type: "spring", damping: 10, stiffness: 400 }}
           >
-            Welcome my beautiful <br />
+            Bienvenue dans mon univers,magnifique  <br />
           </motion.span>
           <TextRotate
             texts={[
-              { text: "Soul", icon: <FaHeart className="inline-block w-12 h-12" /> },
-              { text: "Entity", icon: <FaGhost className="inline-block w-12 h-12" /> },
-              { text: "Human", icon: <FaUser className="inline-block w-12 h-12" /> },
-              { text: "Creature", icon: <FaBug className="inline-block w-12 h-12" /> },
-              { text: "Friend", icon: <FaHeart className="inline-block w-12 h-12" /> },
-              { text: "AI", icon: <FaRobot className="inline-block w-12 h-12" /> },
+              { text: "Âme", icon: <FaHeart className="inline- w-12 h-12 m-4"  /> },
+              { text: "Entité", icon: <FaGhost className="inline-block w-12 h-12 m-4" /> },
+              { text: "Humain", icon: <FaUser className="inline-block w-12 h-12 m-4" /> },
+              { text: "Créature", icon: <FaBug className="inline-block w-12 h-12 m-4" /> },
+              { text: "Ami", icon: <FaHeart className="inline-block w-12 h-12 m-4" /> },
+              { text: "IA", icon: <FaRobot className="inline-block w-12 h-12 m-4"  /> },
             ]}
             mainClassName="text-white px-2 sm:px-3 md:px-4 lg:px-5 bg-black/50 backdrop-blur-md overflow-hidden py-0.5 sm:py-1 md:py-1.5 lg:py-2 justify-center rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
             staggerFrom={"last"}
@@ -298,7 +311,7 @@ function Preview() {
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >
-            {" "}into my world
+            {" "}
           </motion.span>
         </motion.div>
       </LayoutGroup>
