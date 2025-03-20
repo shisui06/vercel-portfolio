@@ -1,13 +1,8 @@
 "use client";
-import { TextRotate } from "@/components/ui/text-rotate";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import Link from "next/link";
 import { useRef } from "react";
 import ProjectsSection from "@/components/ProjectsSection";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
-import ProjectCard from "@/components/ProjectCard";
-import { projectsData } from "@/data/projects";
 import ContactSection from "@/components/ContactSection";
 import { Preview } from "@/components/ui/text-rotate";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
@@ -47,7 +42,7 @@ export default function Home() {
                     contactSection.scrollIntoView({ behavior: "smooth" });
                     window.history.pushState(null, "", "/#contact");
                   }
-                }, 100); // Délai de 100 ms
+                }, 100); 
               }}
               className="mt-8"
             >

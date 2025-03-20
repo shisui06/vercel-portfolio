@@ -1,9 +1,7 @@
 "use client"
 
 import {
-  forwardRef,
-  useCallback,
-  useEffect,
+  forwardRef,useCallback,useEffect,
   useImperativeHandle,
   useMemo,
   useState,
@@ -16,11 +14,12 @@ import {
   Transition,
   LayoutGroup,
 } from "motion/react"
+import { User, Bot, Heart, Ghost, Alien } from 'lucide-react';
 
 import { cn } from "@/lib/utils"
 
 interface TextRotateProps {
-  texts: string[]
+  texts: (string | { text: string; icon: JSX.Element })[];
   rotationInterval?: number
   initial?: MotionProps["initial"]
   animate?: MotionProps["animate"]
@@ -88,19 +87,21 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
     }
 
     const elements = useMemo(() => {
-      const currentText = texts[currentTextIndex]
+      const currentText = typeof texts[currentTextIndex] === 'string' 
+        ? texts[currentTextIndex] 
+        : texts[currentTextIndex].text;
       if (splitBy === "characters") {
-        const text = currentText.split(" ")
+        const text = currentText.split(" ");
         return text.map((word, i) => ({
           characters: splitIntoCharacters(word),
           needsSpace: i !== text.length - 1,
-        }))
+        }));
       }
       return splitBy === "words"
         ? currentText.split(" ")
         : splitBy === "lines"
           ? currentText.split("\n")
-          : currentText.split(splitBy)
+          : currentText.split(splitBy);
     }, [texts, currentTextIndex, splitBy])
 
     const getStaggerDelay = useCallback(
@@ -182,7 +183,11 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
         layout
         transition={transition}
       >
-        <span className="sr-only">{texts[currentTextIndex]}</span>
+        <span className="sr-only">
+          {typeof texts[currentTextIndex] === 'string' 
+            ? texts[currentTextIndex] 
+            : texts[currentTextIndex].text}
+        </span>
 
         <AnimatePresence
           mode={animatePresenceMode}
@@ -231,7 +236,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                       }}
                       className={cn("inline-block", elementLevelClassName)}
                     >
-                      {char}
+                      {typeof char === 'object' ? char : char}
                     </motion.span>
                   ))}
                   {wordObj.needsSpace && (
@@ -253,37 +258,37 @@ export { TextRotate }
 
 function Preview() {
   return (
-    <div className="w-full h-full text-4xl sm:text-6xl md:text-8xl flex flex-col items-center justify-center font-overusedGrotesk text-white font-bold overflow-hidden p-12 sm:p-20 md:p-24">
+    <div className="w-full h-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex flex-col items-center justify-center font-overusedGrotesk text-white font-bold overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
       <LayoutGroup>
         <motion.div className="flex flex-col whitespace-pre" layout>
           <motion.span
-            className="pt-0.5 sm:pt-1 md:pt-2"
+            className="pt-0.5 sm:pt-1 md:pt-1.5 lg:pt-2"
             layout
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            transition={{ type: "spring", damping: 10, stiffness: 400 }}
           >
             Welcome my beautiful <br />
           </motion.span>
           <TextRotate
             texts={[
-              "Soul !",
-              "Entity ✽",
-              "Human ",
-              "Creature",
-              "Friend",
-              "AI",
+              { text: "Soul !", icon: <Heart className="inline-block w-6 h-6" /> },
+              { text: "Entity ✽", icon: <Ghost className="inline-block w-6 h-6" /> },
+              { text: "Human", icon: <User className="inline-block w-6 h-6" /> },
+              { text: "Creature", icon: <Heart className="inline-block w-6 h-6" /> },
+              { text: "Friend", icon: <Heart className="inline-block w-6 h-6" /> },
+              { text: "AI", icon: <Bot className="inline-block w-6 h-6" /> },
             ]}
-            mainClassName="text-white px-2 sm:px-2 md:px-3 bg-black/50 backdrop-blur-md overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            mainClassName="text-white px-2 sm:px-3 md:px-4 lg:px-5 bg-black/50 backdrop-blur-md overflow-hidden py-0.5 sm:py-1 md:py-1.5 lg:py-2 justify-center rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-120%" }}
             staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1.5 lg:pb-2"
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
             rotationInterval={2000}
           />
           <motion.span
-            className="pt-0.5 sm:pt-1 md:pt-2"
+            className="pt-0.5 sm:pt-1 md:pt-1.5 lg:pt-2"
             layout
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
           >

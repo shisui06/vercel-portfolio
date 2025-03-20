@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import React from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { LanguageProvider } from '@/context/LanguageContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,23 +44,25 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="fr" className="h-full">
-      <body className={`${cormorantGaramond.variable} antialiased h-full`}
-        style={{
-          backgroundImage: "url('/images/background/bg3.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <ErrorBoundary>
-          <Navbar onSectionChange={handleSectionChange} />
-          <main className="relative z-10 pt-16 min-h-full">
-            {children}
-          </main>
-        </ErrorBoundary>
-      </body>
-    </html>
+    <LanguageProvider>
+      <html lang="en" className="h-full">
+        <body className={`${cormorantGaramond.variable} antialiased h-full`}
+          style={{
+            backgroundImage: "url('/images/background/bg3.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          <ErrorBoundary>
+            <Navbar onSectionChange={handleSectionChange} />
+            <main className="relative z-10 pt-16 min-h-full">
+              {children}
+            </main>
+          </ErrorBoundary>
+        </body>
+      </html>
+    </LanguageProvider>
   );
 }

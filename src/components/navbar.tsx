@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const navItems = [
   {
@@ -125,7 +126,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
   }, []);
 
   // Add glowing underline style
-  const activeLinkStyle = "relative after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-lime-400 after:rounded-full after:shadow-[0_0_8px_2px_rgba(163,230,53,0.8)]";
+  const activeLinkStyle = "relative after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-white after:rounded-full after:shadow-[0_0_8px_2px_rgba(255,255,255,0.8)] hover:after:opacity-50";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
@@ -141,6 +142,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <LanguageSwitcher />
             {navItems.map((item, index) => {
               const sectionId = item.path.slice(1).replace("#", "");
               const isActive = 
@@ -152,7 +154,7 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
                   key={item.path}
                   onClick={() => handleNavClick(index)}
                   className={`relative text-jg font-large transition-colors ${
-                    isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                    isActive ? 'text-white' : 'text-gray-300 hover:text-white hover:after:opacity-50'
                   } ${isActive ? activeLinkStyle : ''}`}
                 >
                   {item.name}
@@ -230,9 +232,9 @@ export default function Navbar({ onSectionChange }: NavbarProps) {
                     }}
                     className={`block px-3 py-2 rounded-md text-base font-medium ${
                       isActive
-                        ? "text-lime-400 bg-gray-900"
+                        ? "text-white bg-gray-900"
                         : "text-gray-300 hover:text-white hover:bg-gray-700"
-                    } ${isActive ? activeLinkStyle : ''}`}
+                    } ${isActive ? activeLinkStyle : ''} hover:after:opacity-50`}
                   >
                     {item.name}
                   </button>
